@@ -2,9 +2,19 @@
 
 Hey Gaby! This repo is to store the lessons for each of the concepts we are going to talk about. It's basically our home base for tracking everything you learn as you dive into Python.
 
-## What's inside?
-Right now, we've got two main folders:
+## Project Structure
+```text
+GabyLearnsPython/
+├── Assignments/
+│   └── assignment1.py      # Bakery scenario (Variables, Math, and Functions)
+├── Lesson/
+│   ├── day1.py             # Intro to Variables, Math, and basic Functions
+│   └── day2.py             # Deep dive into Data Types and Functions
+├── GEMINI.md               # Project rules and context
+└── README.md               # This file
+```
 
+## What's inside?
 ### Lesson
 This is where the actual teaching happens.
 *   **day1.py**: The absolute basics. We talk about variables (think of them as labeled boxes for data), simple math, and your very first functions.
