@@ -6,14 +6,17 @@
 
 # 1. Strings - for text like words, sentences, or even just one letter.
 # You always put these inside "quotes" or 'quotes'.
+# These are like labels on a folder—words that tell you what something is.
 # x = "Hello World"
 
 # 2. Ints (Integers) - for whole numbers that don't have decimals.
 # Good for counting things.
+# These are like "Whole Apples." You can't have 1.5 whole apples, only 1, 2, or 3.
 # x = 20
 
 # 3. Floats (Floating Point) - for numbers that DO have decimals.
 # Useful for measurements or prices.
+# These are more like "Measuring Cups." You can have 1.5 cups or 0.75 cups.
 # x = 20.5 
 
 # 4. Booleans - for things that are only True or False.
@@ -22,6 +25,7 @@
 
 # 5. Lists - for when you want to store a bunch of things in one place.
 # You use [square brackets] and commas to separate them.
+# It's like a grocery bag where you put many items (milk, bread, eggs) in one place.
 # shopping_list = ["apples", "milk", "eggs"]
 
 

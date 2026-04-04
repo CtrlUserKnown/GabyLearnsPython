@@ -1,8 +1,9 @@
-# Introduction to Python
+# Introduction to Python - Day 1
 
 # 1. What is a variable?
 # A variable is basically a container. It's a way for your computer to remember information.
-# Think of it like a labeled box. Inside the box is the data, and the label is the name.
+# Think of it like a labeled box. If you have a box labeled "Toys," you know exactly 
+# what is inside without having to open it every time. 
 
 # 2. Why use a variable?
 # We use them so we don't have to repeat ourselves. 
@@ -21,18 +22,22 @@ userMessage = "Welcome to Python"
 # - for subtracting
 # * for multiplying (the asterisk)
 # / for dividing (the forward slash)
+# It's basically a super-fast calculator that never gets tired.
 
 mathResult = (10 + 5) * 2 # should be 30
 print(mathResult)
 
 # 5. Functions in Python
 # A function is a reusable block of code. You define it once and "call" it whenever you need it.
-# It's like a mini-program inside your program.
+# It's a lot like a "Coffee Machine." You press one button (the function name), 
+# and it does a bunch of steps for you (grinding beans, boiling water, pouring) 
+# without you having to do them manually every time!
 
 def myFirstFunction():
     print("This code is inside a function!")
 
 # Functions can take "inputs" (parameters) and "output" results (return).
+# Just like coffee beans and water go in, and hot coffee comes out!
 def calculateTax(price, taxRate):
     total = price * taxRate
     return total
