@@ -50,4 +50,3 @@ k9.sniffForClues()   # Max is looking for clues! (New skill)
 # - Class: The Blueprint (Dog)
 # - Object: The real thing made from the blueprint (myDog)
 # - Inheritance: Getting features from a "Parent" class (PoliceDog inheriting from Dog)
-
