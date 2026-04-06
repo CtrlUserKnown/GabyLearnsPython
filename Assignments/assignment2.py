@@ -24,11 +24,16 @@
 # Hint for Task 2: PremiumBakedGood's __init__ should also accept 'extraIngredient' as a parameter.
 
 # --- Grading ---
-# 1. BakedGood class exists and stores itemName and flourRequired.      ( /20 )
-# 2. describe method prints the correct output.                          ( /20 )
-# 3. PremiumBakedGood inherits from BakedGood.                          ( /20 )
-# 4. PremiumBakedGood stores extraIngredient and describeSpecial works.  ( /20 )
-# 5. At least two BakedGood objects and one PremiumBakedGood are created.( /20 )
-#                                                              Total:    ( /100 )
+# 1. BakedGood class exists and stores itemName and flourRequired.        ( /15 )
+# 2. describe method prints the correct output.                            ( /15 )
+# 3. PremiumBakedGood inherits from BakedGood.                            ( /20 )
+# 4. PremiumBakedGood stores extraIngredient and describeSpecial works.   ( /20 )
+# 5. At least two BakedGood objects and one PremiumBakedGood are created. ( /15 )
+# 6. Proper Python formatting:                                             ( /15 )
+#    - Classes use PascalCase (BakedGood, PremiumBakedGood).
+#    - Attributes and methods use camelCase (itemName, describeSpecial).
+#    - Code inside classes and methods is consistently indented.
+#    - No unnecessary or leftover code.
+#                                                                Total:    ( /100 )
 
 # --- START YOUR CODE BELOW ---
