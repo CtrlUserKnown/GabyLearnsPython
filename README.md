@@ -14,7 +14,6 @@ GabyLearnsPython/
 │   ├── day4.py             # Scopes (Local, Global, and L.E.G.B.)
 │   ├── day5.py             # Loops (For, While, Break, and Continue)
 │   └── day6.py             # Error Handling (Try, Except, Raise)
-├── GEMINI.md               # Project rules and context
 └── README.md               # This file
 ```
 ## What's inside?
@@ -31,6 +30,10 @@ This is where you get to put your skills to the test!
 *   **assignment1.py**: The "Cupcake Counter" challenge. You'll use variables and functions to help a bakery manage its flour supply.
 *   **assignment2.py**: The "Bakery Gets Bigger" challenge. You'll create a system to manage baked goods using **Classes** and **Inheritance**.
 *   **assignment3.py**: The "Bakery's Busy Day" challenge. You'll process a list of orders and track flour usage using **Loops** and **Global Scopes**.
+
+### Gradebook
+You can track your progress and see your grades for each assignment in the [Gradebook](Assignments/README.md). This is where you'll find feedback on what you've mastered and what might need a little more practice!
+
 ## How to navigate
 1.  **Start with the Lessons**: Open up the `Lesson/` folder and go through the files in order (`day1.py`, `day2.py`, etc.). Read the comments—they're there to help explain what's going on!
 2.  **Try the Assignments**: Once you feel good about a lesson, check out the `Assignments/` folder to practice what you've learned.
