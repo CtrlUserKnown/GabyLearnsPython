@@ -33,4 +33,8 @@ This is where you get to put your skills to the test!
 2.  **Try the Assignments**: Once you feel good about a lesson, check out the `Assignments/` folder to practice what you've learned.
 3.  **Run the code**: You can run any of these files in your terminal using `python3 Lesson/day1.py` (or whatever file you're looking at).
 
+## Resources
+*   **Python by CS Dojo** - https://youtube.com/playlist?list=PLcVm1Sdt7y0S1x8it9UmrU-ocTHIr7RlH&si=T8d8lViiJoK2Bb3_
+*   **W3Schools Python Tutorial** - https://www.w3schools.com/python/
+
 Let's go!
