@@ -1,4 +1,5 @@
 # Assignment 2: The Bakery Gets Bigger
+# Due date: 04/12/2026 @ 10:59pm CST
 
 # Scenario: The bakery is growing! Instead of just tracking flour,
 # they now want a proper system to manage their baked goods.

@@ -2,9 +2,9 @@
 # Scenario: A small bakery needs a system to track their flour supply. 
 # They need to know if they have enough ingredients to bake cupcakes before they start.
 
-# Final Grade: 90/100
+# Final Grade: 95/100
 # Reason:
-# Code formatting and using global variable within a function, which may lead to errors within the program.
+# Code formatting
 # Overall, good work! You have shown a good understanding of the consept presented to you :)
 
 # Tasks:
@@ -27,8 +27,24 @@
 bakeryName = "Sweet Treats Bakery"
 TotalFlour = 10.5 
 def checkStock(flour):
-    return TotalFlour >= flour 
+    return TotalFlour >= flour
 def bakeOrder(itemName, flourUsed):
     global TotalFlour
     TotalFlour -= flourUsed
     print("Bakery " + itemName + "...")
+
+# # teachers version
+# bakeryName = "Sweet Treats Bakery"
+# TotalFlour = 10.5
+#
+# def checkStock(flour):
+#     global TotalFlour
+#     if TotalFlour >= flour:
+#         return True
+#     else:
+#         return False
+#
+# def bakeOrder(itemName, flourUsed):
+#     global TotalFlour
+#     TotalFlour -= flourUsed
+#     print("Bakery " + itemName)
