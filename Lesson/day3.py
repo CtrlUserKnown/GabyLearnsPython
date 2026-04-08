@@ -1,52 +1,103 @@
-# Python Classes & Inheritance
+# Python Operators & Conditionals
 
-# 1. What is a Class?
-# A class is basically a "blueprint" or a "template" for creating things. 
-# It's like a recipe for a cake. The recipe itself isn't a cake, 
-# but you use it to bake as many real cakes as you want!
+# 1. What are Operators?
+# Operators are symbols that let you do things with your data.
+# Think of them like tools in a toolbox. Each one has a specific job.
 
-# 2. Why use a Class?
-# In programming, we use classes to group together data (variables) 
-# and actions (functions) into one object.
-# It's a great way to stay organized as our code gets bigger and more complex.
+# Math Operators (you already know these from day1):
+# +  Addition
+# -  Subtraction
+# *  Multiplication
+# /  Division
+# %  Modulo (gives you the remainder after dividing)
+# ** Exponent (raises a number to a power)
 
-# 3. How to write a Class:
-# Use the 'class' keyword and then the name of the class (usually capitalized).
-# Inside, we use a special function called __init__ to set up our "template."
+print(10 % 3)  # Output: 1 (10 divided by 3 leaves a remainder of 1)
+print(2 ** 4)  # Output: 16 (2 to the power of 4)
 
-class Dog:
-    # This runs every time we create a new dog!
-    # "self" refers to the specific dog we are creating right now.
-    def __init__(self, dogName, dogBreed):
-        self.dogName = dogName   # This saves the name to the dog
-        self.dogBreed = dogBreed # This saves the breed to the dog
+# 2. Comparison Operators
+# These compare two values and always return True or False.
+# Think of them like a scale. You put something on each side and it tips one way or the other.
 
-    # A function inside a class is called a "method"
-    def barkAtStranger(self):
-        print(self.dogName + " says Woof! Who are you?")
+# ==  Equal to
+# !=  Not equal to
+# >   Greater than
+# <   Less than
+# >=  Greater than or equal to
+# <=  Less than or equal to
 
-# Now we can create real "objects" from our Dog blueprint:
-myDog = Dog("Buddy", "Golden Retriever")
-myDog.barkAtStranger() # Output: Buddy says Woof! Who are you?
+print(10 == 10)  # True
+print(10 != 5)   # True
+print(7 > 10)    # False
 
-# 4. What is Inheritance?
-# Inheritance lets a new class "borrow" everything from an existing class.
-# It works just like a child inheriting traits from a parent. 
+# 3. Logical Operators
+# These let you combine multiple comparisons together.
+# Think of them like the words "and", "or", and "not" in a sentence.
 
-# If we want a specific type of dog, like a PoliceDog, 
-# we don't want to rewrite all the 'dogName' and 'bark' code. 
-# We just "inherit" from the Dog class!
+# and - Both sides must be True
+# or  - At least one side must be True
+# not - Flips True to False, and False to True
 
-class PoliceDog(Dog): # We put the "parent" class in parentheses
-    def sniffForClues(self):
-        print(self.dogName + " is looking for clues!")
+hasTicket = True
+isOldEnough = True
 
-# Now PoliceDog has everything a Dog has, plus its own special skill!
-k9 = PoliceDog("Max", "German Shepherd")
-k9.barkAtStranger() # Max says Woof! (Inherited from Dog)
-k9.sniffForClues()   # Max is looking for clues! (New skill)
+print(hasTicket and isOldEnough)  # True (both are True)
+print(hasTicket or isOldEnough)   # True (at least one is True)
+print(not hasTicket)              # False (flips True to False)
+
+# 4. What are Conditionals?
+# Conditionals let your program make decisions.
+# Think of it like a fork in the road. Depending on the condition,
+# your code takes one path or the other.
+
+# The "if" statement runs a block of code only if the condition is True.
+
+temperature = 85
+
+if temperature > 80:
+    print("It's hot outside!")
+
+# 5. if / else
+# You can add an "else" block to handle the case when the condition is False.
+# If the first road is blocked, take the other one.
+
+temperature = 60
+
+if temperature > 80:
+    print("It's hot outside!")
+else:
+    print("The weather is nice.")
+
+# 6. if / elif / else
+# "elif" stands for "else if." It lets you check multiple conditions in order.
+# Python checks each one from top to bottom and stops at the first True one.
+
+score = 72
+
+if score >= 90:
+    print("Grade: A")
+elif score >= 80:
+    print("Grade: B")
+elif score >= 70:
+    print("Grade: C")
+else:
+    print("Grade: F")
+
+# 7. Putting it all together
+# You can use operators inside your conditionals to build more specific checks.
+
+age = 20
+hasID = True
+
+if age >= 18 and hasID:
+    print("You're good to go!")
+else:
+    print("Sorry, you can't enter.")
 
 # Summary:
-# - Class: The Blueprint (Dog)
-# - Object: The real thing made from the blueprint (myDog)
-# - Inheritance: Getting features from a "Parent" class (PoliceDog inheriting from Dog)
+# - Math Operators: +, -, *, /, %, **
+# - Comparison Operators: ==, !=, >, <, >=, <=  (always return True or False)
+# - Logical Operators: and, or, not  (combine comparisons)
+# - if: Runs code when a condition is True.
+# - elif: Checks another condition if the first was False.
+# - else: Runs when none of the above conditions were True.
