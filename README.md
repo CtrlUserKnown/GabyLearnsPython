@@ -7,7 +7,8 @@ GabyLearnsPython/
 │   ├── assignment1.py      # Bakery scenario (Variables, Math, and Functions)
 │   ├── assignment2.py      # The Bakery's Price Check (Operators and Conditionals)
 │   ├── assignment3.py      # The Bakery Gets Bigger (Classes and Inheritance)
-│   └── assignment4.py      # The Bakery's Busy Day (Loops and Scopes)
+│   ├── assignment4.py      # The Bakery's Busy Day (Loops and Scopes)
+│   └── README.md           # Gradebook and assignment feedback
 ├── Lesson/
 │   ├── day1.py             # Intro to Variables, Math, and basic Functions
 │   ├── day2.py             # Deep dive into Data Types and Functions
@@ -16,6 +17,7 @@ GabyLearnsPython/
 │   ├── day5.py             # Loops (For, While, Break, and Continue)
 │   ├── day6.py             # Error Handling (Try, Except, Raise)
 │   └── day7.py             # Classes and Inheritance
+├── .gitignore              # Files ignored by Git
 └── README.md               # This file
 ```
 ## What's inside?
