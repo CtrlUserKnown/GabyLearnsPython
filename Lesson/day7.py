@@ -53,7 +53,37 @@ k9 = PoliceDog("Max", "German Shepherd")
 k9.barkAtStranger() # Max says Woof! (Inherited from Dog)
 k9.sniffForClues()  # Max is looking for clues! (New skill)
 
+# 5. Mutability
+# Objects created from a class are mutable. That means you can change their
+# attributes after they've been created.
+# Think of it like a whiteboard. Once something is written on it, you can
+# erase it and write something new. The whiteboard is still the same one,
+# just with updated information on it.
+
+myDog.dogName = "Max"  # We just changed Buddy's name to Max
+print(myDog.dogName)   # Output: Max
+
+# This is different from something like a String, which is immutable.
+# Once a String is created, Python won't let you change individual parts of it.
+# Think of a String like text carved into stone. You can't go back and
+# chisel out one letter. You'd have to carve a whole new stone.
+
+myString = "Buddy"
+# myString[0] = "R"  # This would cause a TypeError — you can't do this
+
+# With a class object, you can update individual attributes freely.
+# Each object also keeps its own copy of the data, independent of other objects.
+# Changing one dog's name does not affect any other dog.
+
+dogOne = Dog("Buddy", "Golden Retriever")
+dogTwo = Dog("Rex", "Labrador")
+
+dogOne.dogName = "Charlie"
+print(dogOne.dogName)  # Output: Charlie
+print(dogTwo.dogName)  # Output: Rex (completely unaffected)
+
 # Summary:
 # - Class: The Blueprint (Dog)
 # - Object: The real thing made from the blueprint (myDog)
 # - Inheritance: Getting features from a "Parent" class (PoliceDog inheriting from Dog)
+# - Mutability: Objects can be changed after creation. Each object owns its own data.
