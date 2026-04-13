@@ -16,7 +16,9 @@ GabyLearnsPython/
 │   ├── day4.py             # Scopes (Local, Global, and L.E.G.B.)
 │   ├── day5.py             # Loops (For, While, Break, and Continue)
 │   ├── day6.py             # Error Handling (Try, Except, Raise)
-│   └── day7.py             # Classes and Inheritance
+│   ├── day7.py             # Classes and Inheritance
+│   ├── day8.py             # Common Methods (Strings, Lists, Dicts)
+│   └── day9.py             # File I/O (Read, Write, Append)
 ├── .gitignore              # Files ignored by Git
 └── README.md               # This file
 ```
@@ -30,6 +32,8 @@ This is where the actual teaching happens.
 *   **day5.py**: Learning about **Loops**. Covers For loops, While loops, and how to use Break and Continue to control them.
 *   **day6.py**: Learning about **Error Handling**. Covers Try, Except, Else, Finally, and how to raise your own errors.
 *   **day7.py**: Learning about **Classes** (blueprints for objects) and **Inheritance** (how classes can "borrow" traits from each other).
+*   **day8.py**: Learning about **Common Methods**. Covers useful tools for working with Strings, Lists, Dictionaries, and Type Conversion.
+*   **day9.py**: Learning about **File I/O**. Covers how to read, write, and append data to files, as well as using the "with" statement.
 ### Assignments
 This is where you get to put your skills to the test!
 *   **assignment1.py**: The "Cupcake Counter" challenge. You'll use variables and functions to help a bakery manage its flour supply.
