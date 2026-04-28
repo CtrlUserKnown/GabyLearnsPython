@@ -56,3 +56,5 @@ checkOrder (orderTotal) # (ps.2) -1
 # (ps.1) the spacing needs improvements better. line 42: if you dont add the right spacing while doing calculations, the code may not do what you intend it to do.
 # (ps.2) line 44, 46, 48, 50, 52: when writing or calling functions, the function name and the paranthesies should not be seperate from one another. i.e "functionName(parameter)" not "functionName_(parameter)"
 # Overall: Pay attention to the little details. The order in which things are done makes a differences in the code, especially with math. use comments to think out the code before actually writing it.
+
+# your mean chrissys
