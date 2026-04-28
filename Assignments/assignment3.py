@@ -38,3 +38,36 @@
 #                                                                Total:    ( /100 )
 
 # --- START YOUR CODE BELOW ---
+
+class BakedGood:
+    def __init__(self, itemName, flourRequired):
+        self.itemName = itemName
+        self.flourRequired = flourRequired
+    
+    def describe(self):
+        print(f"{self.itemName} requires {self.flourRequired}kg of flour.")
+
+
+class PremiumBakedGood(BakedGood):
+    def __init__(self, itemName, flourRequired, extraIngredient):
+        super().__init__(itemName, flourRequired)
+        self.extraIngredient = extraIngredient
+    
+    def describeSpecial(self):
+        print(f"Our special {self.itemName} is made with: {self.extraIngredient}.")
+
+
+# Create BakedGood objects
+croissant = BakedGood("Croissant", 0.3)
+bread = BakedGood("Bread", 0.5)
+
+# Create PremiumBakedGood object
+specialCroissant = PremiumBakedGood("Croissant", 0.3, "imported butter")
+
+# Call describe on regular items
+croissant.describe()
+bread.describe()
+
+# Call describe and describeSpecial on premium item
+specialCroissant.describe()
+specialCroissant.describeSpecial()
