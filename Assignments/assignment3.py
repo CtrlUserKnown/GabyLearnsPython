@@ -1,5 +1,6 @@
 # Assignment 3: The Bakery Gets Bigger
-# Due date: 04/19/2026 @ 10:59pm CST
+# Due date: 05/17/2026 @ 10:59pm CST
+# Lessons: day1 - day5
 
 # Scenario: The bakery is growing! Instead of just tracking flour,
 # they now want a proper system to manage their baked goods.
@@ -30,7 +31,8 @@
 # 3. PremiumBakedGood inherits from BakedGood.                            ( /20 )
 # 4. PremiumBakedGood stores extraIngredient and describeSpecial works.   ( /20 )
 # 5. At least two BakedGood objects and one PremiumBakedGood are created. ( /15 )
-# 6. Proper Python formatting:                                             ( /15 )
+# 6. Add comments explaining your code. in plain english.                  ( /10 )
+# 7. Proper Python formatting:                                             ( /5 )
 #    - Classes use PascalCase (BakedGood, PremiumBakedGood).
 #    - Attributes and methods use camelCase (itemName, describeSpecial).
 #    - Code inside classes and methods is consistently indented.
@@ -39,35 +41,3 @@
 
 # --- START YOUR CODE BELOW ---
 
-class BakedGood:
-    def __init__(self, itemName, flourRequired):
-        self.itemName = itemName
-        self.flourRequired = flourRequired
-    
-    def describe(self):
-        print(f"{self.itemName} requires {self.flourRequired}kg of flour.")
-
-
-class PremiumBakedGood(BakedGood):
-    def __init__(self, itemName, flourRequired, extraIngredient):
-        super().__init__(itemName, flourRequired)
-        self.extraIngredient = extraIngredient
-    
-    def describeSpecial(self):
-        print(f"Our special {self.itemName} is made with: {self.extraIngredient}.")
-
-
-# Create BakedGood objects
-croissant = BakedGood("Croissant", 0.3)
-bread = BakedGood("Bread", 0.5)
-
-# Create PremiumBakedGood object
-specialCroissant = PremiumBakedGood("Croissant", 0.3, "imported butter")
-
-# Call describe on regular items
-croissant.describe()
-bread.describe()
-
-# Call describe and describeSpecial on premium item
-specialCroissant.describe()
-specialCroissant.describeSpecial()
