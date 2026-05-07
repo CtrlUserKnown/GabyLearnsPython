@@ -1,5 +1,5 @@
 # Assignment 4: The Bakery's Restock
-# Due date: --/--/2026 @ 10:59pm CST
+# Due date: 05/24/2026 @ 10:59pm CST
 
 # Scenario: A shipment just arrived at the bakery! The delivery includes several
 # ingredients, but not all of them are usable. Some items are expired and need
