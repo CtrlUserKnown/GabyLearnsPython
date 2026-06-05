@@ -3,6 +3,16 @@ Hey Gaby! This repo is to store the lessons for each of the concepts we are goin
 ## Project Structure
 ```text
 GabyLearnsPython/
+├── Practice/
+│   ├── Mod1.py             # Variables, Math, and Functions
+│   ├── Mod2.py             # Data Types and Functions
+│   ├── Mod3.py             # Operators and Conditionals
+│   ├── Mod4.py             # Scopes
+│   ├── Mod5.py             # Loops
+│   ├── Mod6.py             # Error Handling
+│   ├── Mod7.py             # Classes and Inheritance
+│   ├── Mod8.py             # Common Methods
+│   └── README.md           # Practice runner docs
 ├── Assignments/
 │   ├── assignment1.py      # Bakery scenario (Variables, Math, and Functions)
 │   ├── assignment2.py      # The Bakery's Price Check (Operators and Conditionals)
@@ -19,6 +29,7 @@ GabyLearnsPython/
 │   ├── day7.ipynb          # Classes and Inheritance
 │   ├── day8.ipynb          # Common Methods (Strings, Lists, Dicts)
 │   └── day9.ipynb          # File I/O (Read, Write, Append)
+├── pylings                 # Rustlings-style exercise runner (run `pylings` from anywhere)
 ├── .gitignore              # Files ignored by Git
 └── README.md               # This file
 ```
@@ -34,6 +45,20 @@ This is where the actual teaching happens.
 *   **day7.ipynb**: Learning about **Classes** (blueprints for objects) and **Inheritance** (how classes can "borrow" traits from each other).
 *   **day8.ipynb**: Learning about **Common Methods**. Covers useful tools for working with Strings, Lists, Dictionaries, and Type Conversion.
 *   **day9.ipynb**: Learning about **File I/O**. Covers how to read, write, and append data to files, as well as using the "with" statement.
+### Practice (Rustlings-style)
+This is a self-checking practice system inspired by [Rustlings](https://github.com/rust-lang/rustlings).
+
+Each `Practice/Mod{N}.py` file has bite-sized exercises with `None` placeholders. Replace them with your code and run the checker:
+
+```bash
+pylings next       # Run the next incomplete exercise
+pylings list       # Show progress on all exercises
+pylings watch      # Watch mode — auto re-runs on save
+pylings 3          # Run a specific module
+```
+
+When all checks pass, remove the `# I AM NOT DONE` line from the file to mark it complete.
+
 ### Assignments
 This is where you get to put your skills to the test!
 *   **assignment1.py**: The "Cupcake Counter" challenge. You'll use variables and functions to help a bakery manage its flour supply.
