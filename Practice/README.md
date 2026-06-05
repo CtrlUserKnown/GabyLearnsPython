@@ -30,17 +30,20 @@ Run these from anywhere (after setup):
 
 | Command | What it does |
 |---|---|
+| `pylings` | Auto-watch the next incomplete exercise |
 | `pylings list` | List all exercises with ✔ Done / ✘ Not Done status |
 | `pylings next` | Run the first incomplete exercise |
 | `pylings 3` | Run a specific exercise (replace 3 with any number 1-8) |
 | `pylings watch` | Watch the next incomplete exercise — tests re-run on every save |
 | `pylings watch 3` | Watch a specific exercise |
 
+**Watch-mode shortcuts:** press `q` to quit, `h` to show hints.
+
 ## How It Works (Rustlings-style)
 
 1. Each Mod file starts with **`# I AM NOT DONE`** — this means the exercise is still waiting to be completed.
 
-2. Open any Mod file (e.g. `Practice/Mod1.py`), read the comments, and replace the `None` placeholders with your code.
+2. Open any Mod file (e.g. `Practice/Mod1.py`). Each module looks like a real project file with `# TODO` comments and `raise NotImplementedError()` stubs. Replace them with your code.
 
 3. Run the checker whenever you want:
 
@@ -62,15 +65,16 @@ Run these from anywhere (after setup):
 
 5. **When all checks pass**, the runner will tell you to remove `# I AM NOT DONE` from the file. Do that to mark the exercise as complete.
 
-6. Use `pylings watch` for the full Rustlings experience — it watches your file and re-runs tests automatically every time you save.
+6. Use `pylings` (no arguments) or `pylings watch` for the full Rustlings experience — it watches your file and re-runs tests automatically every time you save.
 
 ## Tips
 
 - Run `pylings list` anytime to see your overall progress.
 - You don't have to finish all problems before running the checker. Run it as often as you want.
-- If your file has a syntax error, the runner will print the error and stop. Fix it first.
+- Syntax errors are caught before tests run, with a clean message showing the exact line and column.
 - Variable names must match exactly what the problem asks for — the checker looks for specific names.
 - Some checks are flexible (e.g. `testScore` can be any number — the checker grades it based on what you pick).
+- Use `raise NotImplementedError()` for functions you haven't implemented yet — the hints system (`h` key in watch mode) will pick them up.
 
 ## Module Topics
 

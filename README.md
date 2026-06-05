@@ -48,16 +48,21 @@ This is where the actual teaching happens.
 ### Practice (Rustlings-style)
 This is a self-checking practice system inspired by [Rustlings](https://github.com/rust-lang/rustlings).
 
-Each `Practice/Mod{N}.py` file has bite-sized exercises with `None` placeholders. Replace them with your code and run the checker:
+Each `Practice/Mod{N}.py` file looks like a real project module with `# TODO` markers and `raise NotImplementedError()` stubs. Replace them with your code and run the checker:
 
 ```bash
+pylings            # Auto-watch the next incomplete exercise
 pylings next       # Run the next incomplete exercise
 pylings list       # Show progress on all exercises
-pylings watch      # Watch mode — auto re-runs on save
+pylings watch      # Watch mode — auto re-runs on save, 'q' to quit, 'h' for hints
 pylings 3          # Run a specific module
 ```
 
 When all checks pass, remove the `# I AM NOT DONE` line from the file to mark it complete.
+
+Running `pylings` with no arguments automatically starts watch mode on the next
+incomplete exercise. Syntax errors are caught early and displayed cleanly before
+any tests run.
 
 ### Assignments
 This is where you get to put your skills to the test!
