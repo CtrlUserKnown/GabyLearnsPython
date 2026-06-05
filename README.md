@@ -12,12 +12,26 @@ GabyLearnsPython/
 │   ├── Mod6.py             # Error Handling
 │   ├── Mod7.py             # Classes and Inheritance
 │   ├── Mod8.py             # Common Methods
+│   ├── Mod9.py             # Modules and Packages
+│   ├── Mod10.py            # List Comprehensions
+│   ├── Mod11.py            # Advanced Dicts and Sets
+│   ├── Mod12.py            # Advanced Functions
+│   ├── Mod13.py            # String Formatting and Text
+│   ├── Mod14.py            # Numbers and Math
+│   ├── Mod15.py            # Dates and Time
+│   ├── Mod16.py            # CSV and JSON
 │   └── README.md           # Practice runner docs
 ├── Assignments/
 │   ├── assignment1.py      # Bakery scenario (Variables, Math, and Functions)
 │   ├── assignment2.py      # The Bakery's Price Check (Operators and Conditionals)
 │   ├── assignment3.py      # The Bakery Gets Bigger (Classes and Inheritance)
 │   ├── assignment4.py      # The Bakery's Busy Day (Loops and Scopes)
+│   ├── assignment5.py      # The Bakery's Recipe Module (Modules and Packages)
+│   ├── assignment6.py      # The Bakery's Menu Board (List Comprehensions)
+│   ├── assignment7.py      # The Bakery's Price Calculator (Advanced Functions)
+│   ├── assignment8.py      # The Bakery's Delivery Schedule (Dates and Time)
+│   ├── assignment9.py      # The Bakery's Sales Report (CSV and JSON)
+│   ├── assignment10.py     # The Bakery's Data Dashboard (Capstone)
 │   └── README.md           # Gradebook and assignment feedback
 ├── Lesson/
 │   ├── day1.ipynb          # Intro to Variables, Math, and basic Functions
@@ -28,7 +42,18 @@ GabyLearnsPython/
 │   ├── day6.ipynb          # Error Handling (Try, Except, Raise)
 │   ├── day7.ipynb          # Classes and Inheritance
 │   ├── day8.ipynb          # Common Methods (Strings, Lists, Dicts)
-│   └── day9.ipynb          # File I/O (Read, Write, Append)
+│   ├── day9.ipynb          # File I/O (Read, Write, Append)
+│   ├── day10.ipynb         # Modules and Packages
+│   ├── day11.ipynb         # List Comprehensions
+│   ├── day12.ipynb         # Advanced Dictionaries and Sets
+│   ├── day13.ipynb         # Advanced Functions (*args, lambda, map/filter)
+│   ├── day14.ipynb         # Working with Text (f-strings, regex, formatting)
+│   ├── day15.ipynb         # Working with Numbers (math, random, statistics)
+│   ├── day16.ipynb         # Dates and Time (datetime)
+│   ├── day17.ipynb         # Working with Data (CSV and JSON)
+│   ├── day18.ipynb         # Thinking in Arrays (Vectorized Mindset)
+│   ├── day19.ipynb         # Building a Data Pipeline
+│   └── day20.ipynb         # Introduction to Pandas
 ├── pylings                 # Rustlings-style exercise runner (run `pylings` from anywhere)
 ├── .gitignore              # Files ignored by Git
 └── README.md               # This file
@@ -45,6 +70,17 @@ This is where the actual teaching happens.
 *   **day7.ipynb**: Learning about **Classes** (blueprints for objects) and **Inheritance** (how classes can "borrow" traits from each other).
 *   **day8.ipynb**: Learning about **Common Methods**. Covers useful tools for working with Strings, Lists, Dictionaries, and Type Conversion.
 *   **day9.ipynb**: Learning about **File I/O**. Covers how to read, write, and append data to files, as well as using the "with" statement.
+*   **day10.ipynb**: Learning about **Modules and Packages**. Covers importing, `if __name__ == "__main__"`, pip, and creating your own modules.
+*   **day11.ipynb**: Learning about **List Comprehensions**. One-line list/dict/set creation with filtering and transformation.
+*   **day12.ipynb**: **Advanced Dictionaries and Sets**. `defaultdict`, `Counter`, set operations, and dict merging.
+*   **day13.ipynb**: **Advanced Functions**. `*args`, `**kwargs`, lambda, `map()`, `filter()`, docstrings, and type hints.
+*   **day14.ipynb**: **Working with Text**. f-strings, `.join()`, `.split()`, `.strip()`, regex basics, and string checking methods.
+*   **day15.ipynb**: **Working with Numbers**. `math`, `random`, `statistics` modules, rounding, and precision.
+*   **day16.ipynb**: **Dates and Time**. `datetime`, `strftime`, `strptime`, `timedelta`, and date arithmetic.
+*   **day17.ipynb**: **Working with Data (CSV and JSON)**. Reading/writing CSV and JSON, building a mini data pipeline.
+*   **day18.ipynb**: **Thinking in Arrays**. The vectorized mindset, `zip()`, column-based thinking, preparing for pandas.
+*   **day19.ipynb**: **Building a Data Pipeline**. Extract-Transform-Analyze-Output pattern, modular design, error handling, testing.
+*   **day20.ipynb**: **Introduction to Pandas**. DataFrames, Series, filtering, grouping, and reading data in one line.
 ### Practice (Rustlings-style)
 This is a self-checking practice system inspired by [Rustlings](https://github.com/rust-lang/rustlings).
 
@@ -70,6 +106,12 @@ This is where you get to put your skills to the test!
 *   **assignment2.py**: The "Bakery's Price Check" challenge. You'll use operators and conditionals to validate and flag orders.
 *   **assignment3.py**: The "Bakery Gets Bigger" challenge. You'll create a system to manage baked goods using **Classes** and **Inheritance**.
 *   **assignment4.py**: The "Bakery's Busy Day" challenge. You'll process a list of orders and track flour usage using **Loops** and **Global Scopes**.
+*   **assignment5.py**: The "Bakery's Recipe Module" challenge. You'll organize recipes into a module with **functions and dicts**.
+*   **assignment6.py**: The "Bakery's Menu Board" challenge. You'll transform menu data using **list/dict/set comprehensions**.
+*   **assignment7.py**: The "Bakery's Price Calculator" challenge. You'll build a pricing system with **advanced functions, lambdas, and closures**.
+*   **assignment8.py**: The "Bakery's Delivery Schedule" challenge. You'll track deliveries using **dates, times, and timedeltas**.
+*   **assignment9.py**: The "Bakery's Sales Report" challenge. You'll read CSV data and export a report as **JSON**.
+*   **assignment10.py**: The "Bakery's Data Dashboard" (Capstone). You'll combine everything into a **full data pipeline** with reporting.
 
 ### Gradebook
 You can track your progress and see your grades for each assignment in the [Gradebook](Assignments/README.md). This is where you'll find feedback on what you've mastered and what might need a little more practice!
@@ -77,7 +119,8 @@ You can track your progress and see your grades for each assignment in the [Grad
 ## How to navigate
 1.  **Start with the Lessons**: Open up the `Lesson/` folder and go through the files in order (`day1.ipynb`, `day2.ipynb`, etc.). Read the comments, they're there to help explain what's going on!
 2.  **Try the Assignments**: Once you feel good about a lesson, check out the `Assignments/` folder to practice what you've learned.
-3.  **Run the code**: You can open the lesson notebooks in VS Code or Jupyter. For assignments, you can run them in your terminal using `python3 Assignments/assignment1.py` (or whichever assignment you're working on).
+3.  **Run the pylings**: Use the `pylings` command to practice with auto-graded exercises.
+4.  **Run the code**: You can open the lesson notebooks in VS Code or Jupyter. For assignments, you can run them in your terminal using `python3 Assignments/assignment1.py` (or whichever assignment you're working on).
 ## Resources
 *   **Python by CS Dojo** - A beginner-friendly YouTube playlist that walks you through Python fundamentals step by step. Great for visual learners. https://youtube.com/playlist?list=PLcVm1Sdt7y0S1x8it9UmrU-ocTHIr7RlH&si=T8d8lViiJoK2Bb3_
 *   **W3Schools Python Tutorial** - A quick reference site where you can read about any Python concept and test code right in the browser. https://www.w3schools.com/python/

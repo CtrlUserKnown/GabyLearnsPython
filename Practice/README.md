@@ -18,7 +18,15 @@ Make sure your folder looks like this before you start:
         ├── Mod5.py
         ├── Mod6.py
         ├── Mod7.py
-        └── Mod8.py
+        ├── Mod8.py
+        ├── Mod9.py
+        ├── Mod10.py
+        ├── Mod11.py
+        ├── Mod12.py
+        ├── Mod13.py
+        ├── Mod14.py
+        ├── Mod15.py
+        └── Mod16.py
 
 `pylings` needs to be one level above the Practice folder. If the structure is off,
 the runner won't find your files.
@@ -33,7 +41,7 @@ Run these from anywhere (after setup):
 | `pylings` | Auto-watch the next incomplete exercise |
 | `pylings list` | List all exercises with ✔ Done / ✘ Not Done status |
 | `pylings next` | Run the first incomplete exercise |
-| `pylings 3` | Run a specific exercise (replace 3 with any number 1-8) |
+| `pylings 3` | Run a specific exercise (replace 3 with any number 1-16) |
 | `pylings watch` | Watch the next incomplete exercise — tests re-run on every save |
 | `pylings watch 3` | Watch a specific exercise |
 
@@ -78,11 +86,19 @@ Run these from anywhere (after setup):
 
 ## Module Topics
 
-    Module 1 — Variables, Math, and Functions
-    Module 2 — Data Types and Functions
-    Module 3 — Operators and Conditionals
-    Module 4 — Scopes
-    Module 5 — Loops
-    Module 6 — Error Handling
-    Module 7 — Classes and Inheritance
-    Module 8 — Common Methods
+    Module 1  — Variables, Math, and Functions
+    Module 2  — Data Types and Functions
+    Module 3  — Operators and Conditionals
+    Module 4  — Scopes
+    Module 5  — Loops
+    Module 6  — Error Handling
+    Module 7  — Classes and Inheritance
+    Module 8  — Common Methods
+    Module 9  — Modules and Packages
+    Module 10 — List Comprehensions
+    Module 11 — Advanced Dicts and Sets
+    Module 12 — Advanced Functions
+    Module 13 — String Formatting and Text
+    Module 14 — Numbers and Math
+    Module 15 — Dates and Time
+    Module 16 — CSV and JSON

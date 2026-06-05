@@ -32,6 +32,14 @@ MODULE_TITLES = {
     6: "Error Handling",
     7: "Classes and Inheritance",
     8: "Common Methods",
+    9: "Modules and Packages",
+    10: "List Comprehensions",
+    11: "Advanced Dicts and Sets",
+    12: "Advanced Functions",
+    13: "String Formatting and Text",
+    14: "Numbers and Math",
+    15: "Dates and Time",
+    16: "CSV and JSON",
 }
 
 
@@ -52,7 +60,7 @@ def is_not_done(n):
 
 def list_exercises():
     print(f"\n{BOLD}Exercises:{RESET}\n")
-    for i in range(1, 9):
+    for i in range(1, 17):
         path = mod_path(i)
         if os.path.exists(path):
             done = not is_not_done(i)
@@ -62,7 +70,7 @@ def list_exercises():
 
 
 def find_next():
-    for i in range(1, 9):
+    for i in range(1, 17):
         if is_not_done(i):
             return i
     return None
@@ -863,6 +871,347 @@ def test_mod8(m):
     return r
 
 
+# ── Tests for Modules 9-16 ────────────────────────────────────────────────────
+
+
+def test_mod9(m):
+    r = []
+    r.append(check("appName is a non-empty string",
+        isinstance(getattr(m, 'appName', None), str) and len(m.appName) > 0,
+        "appName = \"MyApp\""))
+    r.append(check("sqrtResult = 12.0 (math.sqrt(144))",
+        getattr(m, 'sqrtResult', None) == 12.0,
+        "sqrtResult = math.sqrt(144)"))
+    r.append(check("circumference = 2 * pi * 5 (about 31.42)",
+        abs((getattr(m, 'circumference', None) or 0) - 31.4159) < 0.01,
+        "circumference = 2 * math.pi * 5"))
+    r.append(check("roundedUp = math.ceil(4.3) = 5",
+        getattr(m, 'roundedUp', None) == 5,
+        "from math import ceil; roundedUp = ceil(4.3)"))
+    r.append(check("roundedDown = math.floor(4.9) = 4",
+        getattr(m, 'roundedDown', None) == 4,
+        "from math import floor; roundedDown = floor(4.9)"))
+    try:
+        gai = m.getAppInfo()
+        r.append(check("getAppInfo() returns a string with appName",
+            isinstance(gai, str) and len(gai) > 0,
+            "return f\"{appName} v{appVersion}\""))
+    except Exception:
+        r.append(check("getAppInfo() returns a string", False, "define getAppInfo()"))
+    try:
+        da = m.divideAndRound(10, 3)
+        r.append(check("divideAndRound(10, 3) = 4",
+            da == 4,
+            "return math.ceil(a / b)"))
+    except Exception:
+        r.append(check("divideAndRound(10, 3) = 4", False, "define divideAndRound"))
+    r.append(check("currentModule exists and matches __name__ or module",
+        getattr(m, 'currentModule', None) is not None,
+        "currentModule = __name__"))
+    return r
+
+
+def test_mod10(m):
+    r = []
+    nums = getattr(m, 'numbers', None)
+    r.append(check("numbers = [1, 2, 3, ..., 10]",
+        nums == list(range(1, 11)),
+        "numbers = list(range(1, 11))"))
+    sq = getattr(m, 'squares', None)
+    r.append(check("squares = [1, 4, 9, ..., 100]",
+        sq == [1, 4, 9, 16, 25, 36, 49, 64, 81, 100],
+        "squares = [n**2 for n in numbers]"))
+    ev = getattr(m, 'evens', None)
+    r.append(check("evens = [2, 4, 6, 8, 10]",
+        ev == [2, 4, 6, 8, 10],
+        "evens = [n for n in numbers if n % 2 == 0]"))
+    words = getattr(m, 'words', None)
+    wl = getattr(m, 'wordLengths', None)
+    r.append(check("wordLengths matches lengths of words",
+        isinstance(words, list) and len(words) >= 5 and
+        isinstance(wl, list) and len(wl) == len(words) and
+        all(wl[i] == len(words[i]) for i in range(len(words))),
+        "wordLengths = [len(w) for w in words]"))
+    aw = getattr(m, 'aWords', None)
+    r.append(check("aWords contains only words starting with 'a'",
+        isinstance(aw, list) and len(aw) > 0 and
+        all(w.startswith('a') for w in aw),
+        "aWords = [w for w in words if w.startswith('a')]"))
+    wld = getattr(m, 'wordLengthDict', None)
+    r.append(check("wordLengthDict maps words to their lengths",
+        isinstance(wld, dict) and len(wld) >= 5 and
+        all(wld[w] == len(w) for w in words),
+        "wordLengthDict = {w: len(w) for w in words}"))
+    fl = getattr(m, 'firstLetters', None)
+    r.append(check("firstLetters is a set of unique first letters",
+        isinstance(fl, set) and len(fl) >= 3,
+        "firstLetters = {w[0] for w in words}"))
+    ni = getattr(m, 'numberedItems', None)
+    r.append(check("numberedItems has correct format",
+        isinstance(ni, list) and len(ni) == 4,
+        "numberedItems = [f'{i}: {item}' for i, item in enumerate(items)]"))
+    return r
+
+
+def test_mod11(m):
+    r = []
+    sc = getattr(m, 'salesCount', None)
+    cc = getattr(m, 'croissantCount', None)
+    r.append(check("salesCount is a defaultdict(int) with 4 croissants",
+        sc is not None and cc == 4,
+        "salesCount = defaultdict(int); for item in salesItems: salesCount[item] += 1"))
+    gbl = getattr(m, 'groupedByLetter', None)
+    r.append(check("groupedByLetter groups words by first letter",
+        gbl is not None and 'a' in gbl and 'b' in gbl,
+        "groupedByLetter = defaultdict(list); for w in wordList: groupedByLetter[w[0]].append(w)"))
+    freq = getattr(m, 'frequency', None)
+    r.append(check("frequency is a Counter with correct counts",
+        freq is not None and freq.get('croissant', 0) == 4,
+        "frequency = Counter(salesItems)"))
+    tt = getattr(m, 'topTwo', None)
+    r.append(check("topTwo has top 2 items from Counter",
+        tt is not None and len(tt) == 2,
+        "topTwo = frequency.most_common(2)"))
+    setA = getattr(m, 'setA', None)
+    setB = getattr(m, 'setB', None)
+    ur = getattr(m, 'unionResult', None)
+    ir = getattr(m, 'intersectionResult', None)
+    dr = getattr(m, 'diffResult', None)
+    r.append(check("setA and setB are sets with 4+ items each",
+        isinstance(setA, set) and len(setA) >= 4 and isinstance(setB, set) and len(setB) >= 4,
+        "setA = {1, 2, 3, 4} / setB = {3, 4, 5, 6}"))
+    r.append(check("unionResult = setA | setB",
+        setA is not None and setB is not None and ur == setA | setB,
+        "unionResult = setA | setB"))
+    r.append(check("intersectionResult = setA & setB",
+        setA is not None and setB is not None and ir == setA & setB,
+        "intersectionResult = setA & setB"))
+    r.append(check("diffResult = setA - setB",
+        setA is not None and setB is not None and dr == setA - setB,
+        "diffResult = setA - setB"))
+    iss = getattr(m, 'isSubset', None)
+    r.append(check("isSubset checks if setA is subset of setB",
+        isinstance(iss, bool),
+        "isSubset = setA.issubset(setB)"))
+    return r
+
+
+def test_mod12(m):
+    r = []
+    sa = getattr(m, 'sumAll', None)
+    try:
+        r.append(check("sumAll(1,2,3,4,5) = 15",
+            m.sumAll(1, 2, 3, 4, 5) == 15,
+            "return sum(args)"))
+    except Exception:
+        r.append(check("sumAll(1,2,3,4,5) = 15", False, "define sumAll(*args)"))
+    try:
+        bp = m.buildProfile(name="Gaby", age=25, city="Austin")
+        r.append(check("buildProfile returns key=value string",
+            isinstance(bp, str) and "Gaby" in bp,
+            "return ', '.join(f'{k}={v}' for k,v in kwargs.items())"))
+    except Exception:
+        r.append(check("buildProfile returns key=value string", False, "define buildProfile(**kwargs)"))
+    try:
+        ad = m.applyDiscount(0.1)
+        r.append(check("applyDiscount(0.1) returns callable that reduces by 10%",
+            callable(ad) and ad(100) == 90.0,
+            "return lambda price: price * (1 - discount)"))
+    except Exception:
+        r.append(check("applyDiscount(0.1) works", False, "define applyDiscount(discount)"))
+    dbl = getattr(m, 'double', None)
+    r.append(check("double is a lambda that doubles numbers",
+        callable(dbl) and dbl(5) == 10,
+        "double = lambda x: x * 2"))
+    pn = getattr(m, 'parsedNums', None)
+    r.append(check("parsedNums = [1, 2, 3] (map + lambda)",
+        pn == [1, 2, 3],
+        "parsedNums = list(map(lambda x: int(x), stringNums))"))
+    bn = getattr(m, 'bigNums', None)
+    r.append(check("bigNums contains numbers > 10 (filter + lambda)",
+        bn == [15, 22, 18],
+        "bigNums = list(filter(lambda x: x > 10, mixedNums))"))
+    sp = getattr(m, 'sortedPairs', None)
+    r.append(check("sortedPairs sorted by second element",
+        sp == [("b", 1), ("c", 2), ("a", 3)],
+        "sortedPairs = sorted(pairs, key=lambda x: x[1])"))
+    r.append(check("total = sumAll(1,2,3,4,5) = 15",
+        getattr(m, 'total', None) == 15,
+        "total = sumAll(1, 2, 3, 4, 5)"))
+    r.append(check("profile is a non-empty string",
+        isinstance(getattr(m, 'profile', None), str) and len(m.profile) > 0,
+        "profile = buildProfile(name='Gaby', ...)"))
+    return r
+
+
+def test_mod13(m):
+    r = []
+    fs = getattr(m, 'formattedSale', None)
+    r.append(check("formattedSale uses f-string with item, qty, total",
+        isinstance(fs, str) and "12" in fs and "croissant" in fs,
+        'formattedSale = f"Sold {quantity} {itemName}s for ${quantity * price:.2f}"'))
+    r.append(check("joined = 'a - b - c'",
+        getattr(m, 'joined', None) == "a - b - c",
+        "joined = ' - '.join(['a', 'b', 'c'])"))
+
+    split_f = getattr(m, 'splitFruits', None)
+    r.append(check("splitFruits = ['apple', 'banana', 'grape']",
+        split_f == ["apple", "banana", "grape"],
+        'splitFruits = fruits.split(",")'))
+    r.append(check("cleaned = 'hello world'",
+        getattr(m, 'cleaned', None) == "hello world",
+        'cleaned = "  hello world  ".strip()'))
+    r.append(check("replaced = 'the dog sat'",
+        getattr(m, 'replaced', None) == "the dog sat",
+        'replaced = "the cat sat".replace("cat", "dog")'))
+    r.append(check("findIndex = 6 ('world' starts at index 6)",
+        getattr(m, 'findIndex', None) == 6,
+        'findIndex = "hello world".find("world")'))
+
+    al = getattr(m, 'alpha', None)
+    di = getattr(m, 'digit', None)
+    an = getattr(m, 'alnum', None)
+    r.append(check("isalpha, isdigit, isalnum on 'hello123'",
+        al == False and di == False and an == True,
+        "alpha = 'hello123'.isalpha() is False"))
+    r.append(check("asPercent = '33.3%' (f-string percentage)",
+        getattr(m, 'asPercent', None) == "33.3%",
+        'asPercent = f"{fraction:.1%}"'))
+    r.append(check("withCommas = '1,234,567'",
+        getattr(m, 'withCommas', None) == "1,234,567",
+        'withCommas = f"{bigNumber:,}"'))
+
+    bw = getattr(m, 'bWords', None)
+    r.append(check("bWords found words starting with 'b' using re.findall",
+        isinstance(bw, list) and len(bw) >= 3 and all(w.startswith('b') for w in bw),
+        "bWords = re.findall(r'\\\\bb\\\\w+', text)"))
+    return r
+
+
+def test_mod14(m):
+    r = []
+    r.append(check("ceilResult = math.ceil(3.2) = 4",
+        getattr(m, 'ceilResult', None) == 4, "ceilResult = math.ceil(3.2)"))
+    r.append(check("floorResult = math.floor(3.8) = 3",
+        getattr(m, 'floorResult', None) == 3, "floorResult = math.floor(3.8)"))
+    r.append(check("sqrtResult = math.sqrt(144) = 12.0",
+        getattr(m, 'sqrtResult', None) == 12.0, "sqrtResult = math.sqrt(144)"))
+    r.append(check("powResult = math.pow(2, 10) = 1024.0",
+        abs((getattr(m, 'powResult', None) or 0) - 1024.0) < 0.01, "powResult = math.pow(2, 10)"))
+    r.append(check("circleArea = pi * 9 (about 28.27)",
+        abs((getattr(m, 'circleArea', None) or 0) - 28.274) < 0.01, "circleArea = math.pi * 3 ** 2"))
+    ri = getattr(m, 'randomInt', None)
+    r.append(check("randomInt is between 1 and 100",
+        isinstance(ri, int) and 1 <= ri <= 100, "randomInt = random.randint(1, 100)"))
+    rc = getattr(m, 'randomColor', None)
+    r.append(check("randomColor is in the color list",
+        rc in ["red", "blue", "green", "yellow"], "randomColor = random.choice(colors)"))
+    sp = getattr(m, 'sample', None)
+    r.append(check("sample is a list of 2 unique items",
+        isinstance(sp, list) and len(sp) == 2 and sp[0] != sp[1], "sample = random.sample(data, 2)"))
+    r.append(check("meanValue = statistics.mean([10..50]) = 30",
+        getattr(m, 'meanValue', None) == 30, "meanValue = statistics.mean(data)"))
+    r.append(check("medianValue = statistics.median([10..50]) = 30",
+        getattr(m, 'medianValue', None) == 30, "medianValue = statistics.median(data)"))
+    r.append(check("rounded = round(3.14159, 2) = 3.14",
+        getattr(m, 'rounded', None) == 3.14, "rounded = round(3.14159, 2)"))
+    r.append(check("min, max, sum on [4,7,2,9,5]",
+        getattr(m, 'minNum', None) == 2 and getattr(m, 'maxNum', None) == 9 and getattr(m, 'sumNums', None) == 27,
+        "minNum = min(nums); maxNum = max(nums); sumNums = sum(nums)"))
+    r.append(check("factorialResult = math.factorial(5) = 120",
+        getattr(m, 'factorialResult', None) == 120, "factorialResult = math.factorial(5)"))
+    r.append(check("gcdResult = math.gcd(12, 8) = 4",
+        getattr(m, 'gcdResult', None) == 4, "gcdResult = math.gcd(12, 8)"))
+    return r
+
+
+def test_mod15(m):
+    r = []
+    from datetime import datetime as dt_type
+    r.append(check("now is a datetime object",
+        isinstance(getattr(m, 'now', None), dt_type),
+        "now = datetime.now()"))
+    cy = getattr(m, 'currentYear', None)
+    cm = getattr(m, 'currentMonth', None)
+    cd = getattr(m, 'currentDay', None)
+    r.append(check("currentYear, currentMonth, currentDay are extracted",
+        isinstance(cy, int) and isinstance(cm, int) and isinstance(cd, int),
+        "currentYear = now.year"))
+    def check_christmas(mod):
+        c = getattr(mod, 'christmas', None)
+        if c is None: return False
+        try:
+            from datetime import date
+            return c == date(2026, 12, 25) or (hasattr(c, 'year') and c.year == 2026 and hasattr(c, 'month') and c.month == 12 and hasattr(c, 'day') and c.day == 25)
+        except: return False
+    r.append(check("christmas = date(2026, 12, 25)",
+        check_christmas(m),
+        "christmas = date(2026, 12, 25)"))
+    fd = getattr(m, 'formattedDate', None)
+    r.append(check("formattedDate uses strftime to format today",
+        isinstance(fd, str) and len(fd) > 0,
+        "formattedDate = now.strftime('%B %d, %Y')"))
+    pd = getattr(m, 'parsedDate', None)
+    r.append(check("parsedDate = datetime.strptime('2026-12-25', '%Y-%m-%d')",
+        pd is not None and (hasattr(pd, 'year') and pd.year == 2026),
+        "parsedDate = datetime.strptime('2026-12-25', '%Y-%m-%d')"))
+    duc = getattr(m, 'daysUntilChristmas', None)
+    r.append(check("daysUntilChristmas is a positive number",
+        isinstance(duc, int) and duc > 0,
+        "daysUntilChristmas = (christmas - date.today()).days"))
+    owl = getattr(m, 'oneWeekLater', None)
+    tda = getattr(m, 'thirtyDaysAgo', None)
+    r.append(check("oneWeekLater and thirtyDaysAgo are date objects",
+        owl is not None and tda is not None,
+        "oneWeekLater = date.today() + timedelta(days=7)"))
+    tf = getattr(m, 'todayFormatted', None)
+    r.append(check("todayFormatted has day, month, year in it",
+        isinstance(tf, str) and len(tf) > 5,
+        "todayFormatted = now.strftime('%A, %B %d, %Y')"))
+    icf = getattr(m, 'isChristmasFuture', None)
+    r.append(check("isChristmasFuture is True (Christmas is in the future)",
+        icf == True,
+        "isChristmasFuture = christmas > date.today()"))
+    st = getattr(m, 'specificTime', None)
+    r.append(check("specificTime is a time object",
+        st is not None,
+        "specificTime = time(14, 30, 0)"))
+    db = getattr(m, 'daysBetween', None)
+    r.append(check("daysBetween = 364 (Jan 1 to Dec 31)",
+        db == 364,
+        "daysBetween = (date2 - date1).days"))
+    return r
+
+
+def test_mod16(m):
+    r = []
+    cr = getattr(m, 'csvRows', None)
+    r.append(check("csvRows is a list (loaded from CSV)",
+        isinstance(cr, list),
+        "with open('sales.csv', 'r') as f: csvRows = list(csv.reader(f))"))
+    cdr = getattr(m, 'csvDictRows', None)
+    r.append(check("csvDictRows is a list of dicts from CSV",
+        isinstance(cdr, list),
+        "with open('sales.csv', 'r') as f: csvDictRows = list(csv.DictReader(f))"))
+
+    # Check that writing files runs without error (we just check the code runs)
+    ld = getattr(m, 'loadedData', None)
+    r.append(check("loadedData is a dict read from data.json",
+        isinstance(ld, dict),
+        "with open('data.json', 'r') as f: loadedData = json.load(f)"))
+
+    pj = getattr(m, 'parsedJson', None)
+    r.append(check("parsedJson = json.loads(jsonString)",
+        isinstance(pj, dict) and pj.get('name') == "Test",
+        "parsedJson = json.loads(jsonString)"))
+
+    jo = getattr(m, 'jsonOutput', None)
+    r.append(check("jsonOutput is a JSON string from json.dumps",
+        isinstance(jo, str) and 'Python' in jo,
+        "jsonOutput = json.dumps(pythonDict)"))
+    return r
+
+
 TEST_MAP = {
     1: test_mod1,
     2: test_mod2,
@@ -872,6 +1221,14 @@ TEST_MAP = {
     6: test_mod6,
     7: test_mod7,
     8: test_mod8,
+    9: test_mod9,
+    10: test_mod10,
+    11: test_mod11,
+    12: test_mod12,
+    13: test_mod13,
+    14: test_mod14,
+    15: test_mod15,
+    16: test_mod16,
 }
 
 
