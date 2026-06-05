@@ -67,3 +67,112 @@
 #                                                        Total:    ( /100 )
 
 # --- START YOUR CODE BELOW ---
+
+
+def calculateTotal(basePrice: float, quantity: int, discount: float = 0.0, taxRate: float = 0.08) -> float:
+    """Calculate the total price after discount and tax.
+
+    Args:
+        basePrice: The base price of one item.
+        quantity: How many items.
+        discount: Discount as a decimal (0.1 = 10%). Defaults to 0.0.
+        taxRate: Tax rate as a decimal. Defaults to 0.08.
+
+    Returns:
+        The total rounded to 2 decimal places.
+    """
+    subtotal = basePrice * quantity
+    afterDiscount = subtotal * (1 - discount)
+    total = afterDiscount * (1 + taxRate)
+    return round(total, 2)
+
+
+def bulkPricing(basePrice: float, quantity: int) -> float:
+    """Apply tiered bulk discounts and return the total.
+
+    Args:
+        basePrice: The base price of one item.
+        quantity: How many items.
+
+    Returns:
+        The total after the bulk discount and tax.
+    """
+    if quantity >= 21:
+        discount = 0.15
+    elif quantity >= 11:
+        discount = 0.10
+    elif quantity >= 6:
+        discount = 0.05
+    else:
+        discount = 0.0
+    return calculateTotal(basePrice, quantity, discount)
+
+
+def applyCoupons(*args: float) -> float:
+    """Combine multiple coupon discounts into a single effective discount.
+
+    Args:
+        *args: Coupon discount values as decimals (e.g. 0.10, 0.05).
+
+    Returns:
+        The combined discount, or 0.0 if no coupons provided.
+    """
+    if not args:
+        return 0.0
+    combined = 1.0
+    for coupon in args:
+        combined *= (1 - coupon)
+    return 1 - combined
+
+
+def makePriceChecker(minPrice: float, maxPrice: float):
+    """Return a function that checks if a price falls within a range.
+
+    Args:
+        minPrice: The minimum price (inclusive).
+        maxPrice: The maximum price (inclusive).
+
+    Returns:
+        A lambda that takes a price and returns True if it's in range.
+    """
+    return lambda price: minPrice <= price <= maxPrice
+
+
+def formatReceipt(*items) -> None:
+    """Print a neatly formatted receipt with itemized totals.
+
+    Args:
+        *items: Tuples of (name, price, quantity).
+    """
+    grandTotal = 0.0
+    for name, price, qty in items:
+        lineTotal = price * qty
+        grandTotal += lineTotal
+        print(f"{name:<15} x {qty:<2} = ${lineTotal:>6.2f}")
+    print(f"{'':27}--------")
+    print(f"{'TOTAL':<21} ${grandTotal:>6.2f}")
+
+
+# Demonstration
+print("=== calculateTotal ===")
+print(f"5 croissants at $3.50: ${calculateTotal(3.50, 5)}")
+print(f"5 croissants at $3.50 (10% off): ${calculateTotal(3.50, 5, 0.10)}")
+
+print("\n=== bulkPricing ===")
+print(f"3 items at $2.00: ${bulkPricing(2.00, 3)}")
+print(f"8 items at $2.00: ${bulkPricing(2.00, 8)}")
+print(f"15 items at $2.00: ${bulkPricing(2.00, 15)}")
+print(f"25 items at $2.00: ${bulkPricing(2.00, 25)}")
+
+print("\n=== applyCoupons ===")
+print(f"100.0 with no coupons: {1 - (1 - 0)} = {applyCoupons()}")
+print(f"100.0 with 10% off: {applyCoupons(0.10)}")
+print(f"100.0 with 10% and 5% off: {applyCoupons(0.10, 0.05)}")
+
+print("\n=== makePriceChecker ===")
+checker = makePriceChecker(1.00, 5.00)
+print(f"Is $3.00 in range? {checker(3.00)}")
+print(f"Is $6.00 in range? {checker(6.00)}")
+
+print("\n=== formatReceipt ===")
+formatReceipt(("Croissant", 3.50, 3), ("Muffin", 2.00, 2), ("Coffee", 2.00, 1))

@@ -75,3 +75,142 @@
 #                                                        Total:    ( /100 )
 
 # --- START YOUR CODE BELOW ---
+
+import csv
+import json
+from datetime import datetime
+from typing import List, Dict, Tuple, Optional
+
+
+def createSampleCSV() -> None:
+    """Write a sample CSV file called bakery_sales.csv with at least 10 rows."""
+    with open("bakery_sales.csv", "w", newline="") as f:
+        writer = csv.writer(f)
+        writer.writerow(["date", "item", "quantity", "price"])
+        writer.writerow(["2026-06-01", "croissant", 12, 3.50])
+        writer.writerow(["2026-06-01", "muffin", 8, 2.00])
+        writer.writerow(["2026-06-01", "coffee", 15, 2.00])
+        writer.writerow(["2026-06-02", "bagel", 10, 1.50])
+        writer.writerow(["2026-06-02", "croissant", 20, 3.50])
+        writer.writerow(["2026-06-02", "cookie", 25, 1.00])
+        writer.writerow(["2026-06-03", "scone", 6, 2.50])
+        writer.writerow(["2026-06-03", "muffin", 14, 2.00])
+        writer.writerow(["2026-06-03", "brownie", 9, 2.75])
+        writer.writerow(["2026-06-03", "coffee", 18, 2.00])
+
+
+def loadSales(filepath: str) -> List[Dict[str, object]]:
+    """Read a CSV sales file and return a list of cleaned order dicts.
+
+    Args:
+        filepath: Path to the CSV file.
+
+    Returns:
+        A list of dicts with quantity (int), price (float), and revenue (float).
+    """
+    sales = []
+    with open(filepath, "r", newline="") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            try:
+                row["quantity"] = int(row["quantity"])
+                row["price"] = float(row["price"])
+                row["revenue"] = round(row["quantity"] * row["price"], 2)
+                sales.append(row)
+            except (ValueError, KeyError):
+                print(f"Warning: Skipping bad row: {row}")
+    return sales
+
+
+def dailySummary(sales: List[Dict[str, object]]) -> Dict[str, Dict[str, float]]:
+    """Group sales by date and calculate totals for each day.
+
+    Args:
+        sales: The list of cleaned sales dicts.
+
+    Returns:
+        A dict mapping dates to their summary stats.
+    """
+    summary = {}
+    for s in sales:
+        date = s["date"]
+        if date not in summary:
+            summary[date] = {"totalRevenue": 0.0, "totalItems": 0, "orderCount": 0}
+        summary[date]["totalRevenue"] += s["revenue"]
+        summary[date]["totalItems"] += s["quantity"]
+        summary[date]["orderCount"] += 1
+    for d in summary:
+        summary[d]["totalRevenue"] = round(summary[d]["totalRevenue"], 2)
+    return summary
+
+
+def topSellers(sales: List[Dict[str, object]], limit: int = 3) -> List[Tuple[str, int]]:
+    """Return the top N best-selling items by total quantity.
+
+    Args:
+        sales: The list of cleaned sales dicts.
+        limit: How many top sellers to return (default 3).
+
+    Returns:
+        A list of (itemName, totalQuantity) tuples sorted descending.
+    """
+    totals = {}
+    for s in sales:
+        item = s["item"]
+        totals[item] = totals.get(item, 0) + s["quantity"]
+    sorted_items = sorted(totals.items(), key=lambda x: x[1], reverse=True)
+    return sorted_items[:limit]
+
+
+def exportReport(sales: List[Dict[str, object]], filepath: str) -> Dict[str, object]:
+    """Generate a full report and write it as JSON.
+
+    Args:
+        sales: The list of cleaned sales dicts.
+        filepath: Where to write the JSON report.
+
+    Returns:
+        The report dict.
+    """
+    daily = dailySummary(sales)
+    top = topSellers(sales)
+    totalRevenue = round(sum(s["revenue"] for s in sales), 2)
+    totalItemsSold = sum(s["quantity"] for s in sales)
+
+    report = {
+        "generated": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        "totalRevenue": totalRevenue,
+        "totalItemsSold": totalItemsSold,
+        "dailySummaries": daily,
+        "topSellers": top,
+    }
+
+    with open(filepath, "w") as f:
+        json.dump(report, f, indent=2)
+
+    return report
+
+
+def runReport(inputFile: str, outputFile: str) -> None:
+    """Load sales from CSV, generate a report, and save as JSON.
+
+    Args:
+        inputFile: Path to the input CSV file.
+        outputFile: Path for the output JSON report.
+    """
+    print(f"Loading sales from {inputFile}...")
+    try:
+        sales = loadSales(inputFile)
+    except FileNotFoundError:
+        print(f"Error: File '{inputFile}' not found.")
+        return
+
+    print(f"Loaded {len(sales)} sales entries. Generating report...")
+    report = exportReport(sales, outputFile)
+    print(f"Report saved to {outputFile}")
+    print(f"Total Revenue: ${report['totalRevenue']}")
+    print(f"Total Items Sold: {report['totalItemsSold']}")
+
+
+createSampleCSV()
+runReport("bakery_sales.csv", "bakery_report.json")

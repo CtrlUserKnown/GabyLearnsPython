@@ -54,6 +54,7 @@
 
 # --- START YOUR CODE BELOW ---
 
+# This is the bakery's current stock. Each ingredient tracks how much we have in kg.
 pantry = {
     "flour": 5.0,
     "sugar": 3.0,
@@ -61,6 +62,8 @@ pantry = {
     "eggs": 1.5
 }
 
+# This is the delivery shipment. Each item has the ingredient name, how much (in kg),
+# and whether it has expired. Expired items cannot be accepted.
 shipment = [
     {"ingredient": "flour",       "amount": 3.0,  "expired": False},
     {"ingredient": "sugar",       "amount": 2.0,  "expired": True},
@@ -69,3 +72,31 @@ shipment = [
     {"ingredient": "baking soda", "amount": 1.0,  "expired": True},
     {"ingredient": "eggs",        "amount": 2.0,  "expired": False},
 ]
+
+
+# This function looks at one item from the shipment and decides what to do with it.
+# If it's expired, we throw it away. If it's good, we add it to the pantry stock.
+def processItem(item):
+    global pantry
+    if item["expired"]:
+        # The item has expired, so we cannot accept it. Let the baker know.
+        print(f"Rejecting expired {item['ingredient']} ({item['amount']}kg).")
+    else:
+        # The item is fresh — check if we already have this ingredient in the pantry.
+        if item["ingredient"] in pantry:
+            # We already have this ingredient, so we add the new amount to what we already have.
+            pantry[item["ingredient"]] += item["amount"]
+        else:
+            # This is a new ingredient we don't have yet, so we add it to the pantry.
+            pantry[item["ingredient"]] = item["amount"]
+        print(f"Accepted {item['ingredient']} ({item['amount']}kg).")
+
+
+# Go through each item in the shipment one by one and process it.
+for item in shipment:
+    processItem(item)
+
+# Print a nice summary of everything we now have in the pantry.
+print("\nFinal pantry contents:")
+for ingredient, amount in pantry.items():
+    print(f"  {ingredient}: {amount}kg")

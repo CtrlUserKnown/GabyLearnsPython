@@ -4,35 +4,32 @@ Inventory and Collection Manager
 Manages grouped data structures, frequency counting,
 and set-based operations for data processing.
 """
-# I AM NOT DONE
 
 from collections import defaultdict, Counter
 
-# TODO: Create a defaultdict(int) and count occurrences of each item
 salesItems = ["croissant", "muffin", "croissant", "bagel",
               "croissant", "muffin", "cookie", "bagel", "croissant"]
-salesCount = None  # Use defaultdict(int)
 
-# After populating, croissant should have count 4
-croissantCount = None
+salesCount = defaultdict(int)
+for item in salesItems:
+    salesCount[item] += 1
 
-# TODO: Create a defaultdict(list) to group items by their first letter
+croissantCount = salesCount["croissant"]
+
 wordList = ["apple", "banana", "avocado", "blueberry", "apricot", "cherry"]
-groupedByLetter = None  # defaultdict(list)
+groupedByLetter = defaultdict(list)
+for word in wordList:
+    groupedByLetter[word[0]].append(word)
 
-# TODO: Use Counter to count the frequency of each item in salesItems
-frequency = None  # Counter object
+frequency = Counter(salesItems)
 
-# TODO: Use .most_common() to get the top 2 items
-topTwo = None
+topTwo = frequency.most_common(2)
 
-# TODO: Create two sets and perform operations
-setA = None  # TODO: Set with at least 4 items
-setB = None  # TODO: Set with at least 4 items (some overlap with setA)
+setA = {1, 2, 3, 4}
+setB = {3, 4, 5, 6}
 
-unionResult = None        # TODO: setA | setB
-intersectionResult = None  # TODO: setA & setB
-diffResult = None          # TODO: setA - setB
+unionResult = setA | setB
+intersectionResult = setA & setB
+diffResult = setA - setB
 
-# TODO: Use .issubset() to check if setA is a subset of setB
-isSubset = None
+isSubset = setA.issubset(setB)

@@ -4,36 +4,33 @@ User Profile Management Module
 Handles user profile data types, display utilities,
 and common profile calculations.
 """
-# I AM NOT DONE
 
-myString = None  # TODO: Set to a string value
-myInt = None     # TODO: Set to an integer value
-myFloat = None   # TODO: Set to a float value
-myBool = None    # TODO: Set to a boolean value
-myList = None    # TODO: Set to a list value
+myString = "Hello"
+myInt = 42
+myFloat = 3.14
+myBool = True
+myList = [1, 2, 3]
 
-favoriteFoods = None  # TODO: Set to a list with at least 4 items
+favoriteFoods = ["pizza", "sushi", "tacos", "pasta"]
 
-isLoggedIn = None  # TODO: Set to False, then True on the next line
+isLoggedIn = False
+isLoggedIn = True
 
 
 def describeUser(userName, age):
-    """Print a sentence using the user's name and age."""
-    raise NotImplementedError()
+    print(f"{userName} is {age} years old.")
 
 
 def calcTip(billTotal, tipPercent):
-    """Return the tip amount for a given bill total and tip percentage."""
-    raise NotImplementedError()
+    return billTotal * (tipPercent / 100)
 
 
-weekdays = None  # TODO: Set to a list of all 5 weekdays
+weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
 
 
 def isAdult(age):
-    """Return True if age is 18 or older, False otherwise."""
-    raise NotImplementedError()
+    return age >= 18
 
 
-gpa = None             # TODO: Set to a float value
-graduationYear = None  # TODO: Set to an integer value
+gpa = 3.7
+graduationYear = 2027

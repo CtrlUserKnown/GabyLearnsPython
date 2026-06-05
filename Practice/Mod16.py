@@ -4,32 +4,43 @@ Data Import and Export Module
 Functions for reading, writing, and transforming
 data between CSV and JSON formats.
 """
-# I AM NOT DONE
 
 import csv
 import json
 
-# TODO: Read 'sales.csv' using csv.reader and store rows in a list
-# (Assume the file exists from previous exercises)
 csvRows = []
+with open('sales.csv', 'r') as f:
+    reader = csv.reader(f)
+    for row in reader:
+        csvRows.append(row)
 
-# TODO: Read 'sales.csv' using csv.DictReader and store rows in a list
 csvDictRows = []
+with open('sales.csv', 'r') as f:
+    reader = csv.DictReader(f)
+    for row in reader:
+        csvDictRows.append(row)
 
-# TODO: Write data to 'output.csv' using csv.writer
 outputData = [
     ["name", "age", "city"],
     ["Gaby", 25, "Austin"],
     ["Bob", 30, "Dallas"],
 ]
 
-# TODO: Write data to 'output_dict.csv' using csv.DictWriter
+with open('output.csv', 'w', newline='') as f:
+    writer = csv.writer(f)
+    writer.writerows(outputData)
+
 outputDictData = [
     {"name": "Gaby", "age": "25", "city": "Austin"},
     {"name": "Bob", "age": "30", "city": "Dallas"},
 ]
 
-# TODO: Create a Python dict and save it as 'data.json' using json.dump()
+with open('output_dict.csv', 'w', newline='') as f:
+    fieldnames = ["name", "age", "city"]
+    writer = csv.DictWriter(f, fieldnames=fieldnames)
+    writer.writeheader()
+    writer.writerows(outputDictData)
+
 sampleData = {
     "bakery": "Sweet Treats",
     "items": [
@@ -39,13 +50,14 @@ sampleData = {
     "isOpen": True,
 }
 
-# TODO: Read 'data.json' back using json.load() and store the result
-loadedData = None
+with open('data.json', 'w') as f:
+    json.dump(sampleData, f, indent=2)
 
-# TODO: Convert a JSON string to a Python dict using json.loads()
+with open('data.json', 'r') as f:
+    loadedData = json.load(f)
+
 jsonString = '{"name": "Test", "value": 42}'
-parsedJson = None
+parsedJson = json.loads(jsonString)
 
-# TODO: Convert a Python dict to a JSON string using json.dumps()
 pythonDict = {"language": "Python", "version": 3.11}
-jsonOutput = None
+jsonOutput = json.dumps(pythonDict, indent=2)

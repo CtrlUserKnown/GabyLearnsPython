@@ -4,53 +4,47 @@ City Information Configuration Module
 Manages city data, measurements, pricing, and user interaction
 utilities for the city information system.
 """
-# I AM NOT DONE
 
-cityName = None  # TODO: Set the city name
+cityName = "New York"
 
-length = None   # TODO: Set a length value for city planning
-width = None    # TODO: Set a width value
-area = None     # TODO: Calculate length * width
+length = 50
+width = 30
+area = length * width
 
-temperature = None  # TODO: Set to 98.6
+temperature = 98.6
 
 
 def greetUser():
-    """Print a welcome message to the user."""
-    raise NotImplementedError()
+    print("Welcome to the city information system!")
 
 
 def addNumbers(a, b):
-    """Return the sum of two numbers."""
-    raise NotImplementedError()
+    return a + b
 
 
-total = None  # TODO: Call addNumbers(15, 27) and store the result
+total = addNumbers(15, 27)
 
 
 def squareNumber(number):
-    """Return the number multiplied by itself."""
-    raise NotImplementedError()
+    return number * number
 
 
-price = None       # TODO: Set to 49.99
-quantity = None    # TODO: Set to 3
-orderCost = None   # TODO: Calculate price * quantity
+price = 49.99
+quantity = 3
+orderCost = price * quantity
 
 
 def convertToMeters(feet):
-    """Convert feet to meters (1 foot = 0.3048 meters)."""
-    raise NotImplementedError()
+    return feet * 0.3048
 
 
 def getFullName(firstName, lastName):
-    """Return first and last name combined with a space."""
-    raise NotImplementedError()
+    return firstName + " " + lastName
 
 
-score = None  # TODO: Set to 0
+score = 0
 
 
 def addPoints(number):
-    """Return score plus the given number."""
-    raise NotImplementedError()
+    global score
+    return score + number

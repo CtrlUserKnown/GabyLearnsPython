@@ -1,0 +1,14 @@
+{
+  "bakery": "Sweet Treats",
+  "items": [
+    {
+      "name": "croissant",
+      "price": 3.5
+    },
+    {
+      "name": "muffin",
+      "price": 2.0
+    }
+  ],
+  "isOpen": true
+}

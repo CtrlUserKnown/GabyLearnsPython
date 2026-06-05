@@ -59,3 +59,30 @@
 #                                                        Total:    ( /100 )
 
 # --- START YOUR CODE BELOW ---
+
+itemNames = ["croissant", "muffin", "bagel", "cookie", "scone", "brownie", "coffee", "tea"]
+prices = [3.50, 2.00, 1.50, 1.00, 2.50, 2.75, 2.00, 1.50]
+categories = ["pastry", "pastry", "bread", "dessert", "pastry", "dessert", "drink", "drink"]
+
+# Create nicely formatted menu lines like "Croissant ($3.50)" by combining
+# the item name (with proper capitalization) and the price (with 2 decimal places).
+formattedMenu = [f"{name.title()} (${price:.2f})" for name, price in zip(itemNames, prices)]
+
+# Build a quick lookup dictionary so we can find any item's price by its name.
+priceByItem = {name.title(): price for name, price in zip(itemNames, prices)}
+
+# Organize items into groups by their category, so we can see all pastries,
+# breads, drinks, etc. in their own list.
+itemsByCategory = {
+    cat: [itemNames[i].title() for i in range(len(itemNames)) if categories[i] == cat]
+    for cat in set(categories)
+}
+
+# Find items that cost less than $3.00 — these are the budget-friendly options.
+affordableItems = [(itemNames[i].title(), prices[i]) for i in range(len(prices)) if prices[i] < 3.00]
+
+# Calculate what each item would cost after a 15% discount, rounded to 2 decimal places.
+discountedPrices = [round(price * 0.85, 2) for price in prices]
+
+# Collect all the unique categories we have, without duplicates.
+uniqueCategories = {cat for cat in categories}

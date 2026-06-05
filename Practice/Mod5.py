@@ -4,32 +4,70 @@ Data Processing Module
 Collection of data processing utilities for working with
 lists, loops, and data transformations.
 """
-# I AM NOT DONE
 
-animals = None        # TODO: Set to a list of 5 animals
-printedAnimals = []   # TODO: Use a for loop to copy animals into here
+animals = ["cat", "dog", "bird", "fish", "hamster"]
+printedAnimals = []
+for a in animals:
+    printedAnimals.append(a)
 
-oneToTen = []    # TODO: Use a for loop with range() to fill with 1-10
-countUp = []     # TODO: Use a while loop to fill with 1-5
+oneToTen = []
+for i in range(1, 11):
+    oneToTen.append(i)
 
-prices = None      # TODO: Set to a list of at least 4 floats
-priceTotal = 0.0   # TODO: Use a for loop to sum the prices
+countUp = []
+i = 1
+while i <= 5:
+    countUp.append(i)
+    i += 1
 
-evens = []       # TODO: Use a loop to fill with even numbers 0-20
-countDown = []   # TODO: Start at 100, subtract 15 until below 0
+prices = [1.99, 2.50, 3.75, 4.00]
+priceTotal = 0.0
+for p in prices:
+    priceTotal += p
 
-names = None         # TODO: Set to a list with at least 5 names, some starting with "A"
-filteredNames = []   # TODO: Loop with continue to exclude names starting with "A"
+evens = []
+for i in range(0, 21, 2):
+    evens.append(i)
 
-numbers = None     # TODO: Set to a list that includes a number > 50
-foundNumber = None # TODO: Loop with break to find the first number > 50
+countDown = []
+i = 100
+while i >= 0:
+    countDown.append(i)
+    i -= 15
 
-multiplicationTable = []  # TODO: Loop to fill with 7x1 through 7x10
+names = ["Alice", "Bob", "Amy", "Charlie", "Anna", "David"]
+filteredNames = []
+for name in names:
+    if name.startswith("A"):
+        continue
+    filteredNames.append(name)
+
+numbers = [10, 20, 30, 60, 40]
+foundNumber = None
+for n in numbers:
+    if n > 50:
+        foundNumber = n
+        break
+
+multiplicationTable = []
+for i in range(1, 11):
+    multiplicationTable.append(7 * i)
 
 attempts = 0
-lockMessage = None  # TODO: While loop, at 3 attempts set this to "Locked out!"
+lockMessage = None
+while attempts < 3:
+    attempts += 1
+if attempts >= 3:
+    lockMessage = "Locked out!"
 
-mixedItems = None  # TODO: Set to a list where some values are None
-realItems = []     # TODO: Loop with continue to keep only non-None values
+mixedItems = [1, None, 2, None, 3]
+realItems = []
+for item in mixedItems:
+    if item is None:
+        continue
+    realItems.append(item)
 
-eCount = 0  # TODO: Count how many times "e" appears in "intermediate"
+eCount = 0
+for ch in "intermediate":
+    if ch == "e":
+        eCount += 1

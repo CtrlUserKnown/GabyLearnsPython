@@ -62,3 +62,57 @@
 #                                                        Total:    ( /100 )
 
 # --- START YOUR CODE BELOW ---
+
+"""
+Recipe management module for the bakery.
+
+Provides functions to look up recipes, scale them to different
+yields, list available recipes, and check if the pantry has enough
+ingredients for a given recipe.
+"""
+
+recipes = {
+    "croissant": {"flour": 2.0, "sugar": 0.5, "butter": 1.0, "yield": 12},
+    "muffin":    {"flour": 1.5, "sugar": 0.8, "butter": 0.5, "yield": 10},
+    "bagel":     {"flour": 3.0, "sugar": 0.2, "butter": 0.3, "yield": 15},
+    "cookie":    {"flour": 1.0, "sugar": 0.6, "butter": 0.7, "yield": 24},
+}
+
+
+def getRecipe(itemName):
+    """Return the recipe dict for itemName, or None if not found."""
+    if itemName in recipes:
+        return recipes[itemName]
+    return None
+
+
+def scaleRecipe(itemName, desiredYield):
+    """Scale a recipe to a desired yield. Return scaled dict or None if not found."""
+    recipe = getRecipe(itemName)
+    if recipe is None:
+        return None
+    ratio = desiredYield / recipe["yield"]
+    scaled = {}
+    for ingredient, amount in recipe.items():
+        if ingredient == "yield":
+            continue
+        scaled[ingredient] = round(amount * ratio, 2)
+    return scaled
+
+
+def listRecipes():
+    """Return a sorted list of all available recipe names."""
+    return sorted(recipes.keys())
+
+
+def hasIngredients(recipeName, pantry):
+    """Check if the pantry has enough of each ingredient for the given recipe."""
+    recipe = getRecipe(recipeName)
+    if recipe is None:
+        return False
+    for ingredient, amount in recipe.items():
+        if ingredient == "yield":
+            continue
+        if pantry.get(ingredient, 0) < amount:
+            return False
+    return True

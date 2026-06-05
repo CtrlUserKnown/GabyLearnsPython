@@ -4,80 +4,80 @@ Game State Management Module
 Manages global game state including player stats,
 scoring, inventory, and game control functions.
 """
-# I AM NOT DONE
 
-appName = None  # TODO: Set to the application name
+appName = "My Game"
 
 
 def localTest():
-    """Create a local variable and return it."""
-    raise NotImplementedError()
+    x = 10
+    return x
 
 
-lives = None  # TODO: Set to 3
+lives = 3
 
 
 def loseLife():
-    """Decrement lives by 1 using the global keyword."""
-    raise NotImplementedError()
+    global lives
+    lives -= 1
 
 
-playerName = None  # TODO: Set to "Player One"
+playerName = "Player One"
 
 
 def changeName():
-    """Change playerName using the global keyword."""
-    raise NotImplementedError()
+    global playerName
+    playerName = "New Player"
 
 
-totalSales = None  # TODO: Set to 0
+totalSales = 0
 
 
 def makeSale(amount):
-    """Add amount to totalSales using the global keyword."""
-    raise NotImplementedError()
+    global totalSales
+    totalSales += amount
 
 
-color = None  # TODO: Set to "blue"
+color = "blue"
 
 
 def localColor():
-    """Return a local 'color' set to 'red' without changing the global."""
-    raise NotImplementedError()
+    color = "red"
+    return color
 
 
-counter = None  # TODO: Set to 0
+counter = 0
 
 
 def incrementCounter():
-    """Add 1 to counter using the global keyword."""
-    raise NotImplementedError()
+    global counter
+    counter += 1
 
 
 def getDiscount():
-    """Return the local variable discountRate set to 0.15."""
-    raise NotImplementedError()
+    discountRate = 0.15
+    return discountRate
 
 
-isGameOver = None  # TODO: Set to False
+isGameOver = False
 
 
 def endGame():
-    """Set isGameOver to True using the global keyword."""
-    raise NotImplementedError()
+    global isGameOver
+    isGameOver = True
 
 
 def outerFunction():
-    """
-    Create a nested function that returns a variable from the outer scope.
-    Return the result of calling the inner function.
-    """
-    raise NotImplementedError()
+    message = "Hello from outer"
+
+    def innerFunction():
+        return message
+
+    return innerFunction()
 
 
-budget = None  # TODO: Set to 500
+budget = 500
 
 
 def spendMoney(cost):
-    """Subtract cost from budget using the global keyword."""
-    raise NotImplementedError()
+    global budget
+    budget -= cost

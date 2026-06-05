@@ -4,39 +4,44 @@ Text and Data Transformation Utilities
 Utility functions for string manipulation, list operations,
 dictionary management, and data type conversions.
 """
-# I AM NOT DONE
 
-paddedString = None   # TODO: Set to a string with leading/trailing spaces
-strippedString = None # TODO: Use strip() on paddedString
+paddedString = "  hello world  "
+strippedString = paddedString.strip()
 
-lowerTitle = None  # TODO: Set to a lowercase string
-titledString = None # TODO: Use title() on lowerTitle
+lowerTitle = "hello world"
+titledString = lowerTitle.title()
 
-original = None  # TODO: Set to a string
-replaced = None  # TODO: Use replace() to swap a word
+original = "I like cats"
+replaced = original.replace("cats", "dogs")
 
-sentence = None  # TODO: Set to a multi-word sentence
-wordList = None  # TODO: Use split() on sentence
+sentence = "The quick brown fox"
+wordList = sentence.split()
 
-unsortedNums = None  # TODO: Set to a list of at least 5 numbers out of order
-sortedNums = None    # TODO: Sort the list
+unsortedNums = [5, 2, 8, 1, 9]
+sortedNums = sorted(unsortedNums)
 
-editList = None  # TODO: Set to a list with at least 5 items
-# TODO: Use remove() to delete an item, then append() to add a new one
+editList = ["a", "b", "c", "d", "e"]
+editList.remove("c")
+editList.append("f")
 
-personDict = None  # TODO: Create a dict with at least 3 key-value pairs
-dictKeys = None    # TODO: Extract keys from personDict
-dictValues = None  # TODO: Extract values from personDict
+personDict = {"name": "Gaby", "age": 25, "city": "Austin"}
+dictKeys = list(personDict.keys())
+dictValues = list(personDict.values())
 
-missingValue = None  # TODO: Use get() on personDict for a missing key "nickname"
+missingValue = personDict.get("nickname", None)
 
-updatedDict = None  # TODO: Use update() then pop() on personDict
+updatedDict = personDict.copy()
+updatedDict.update({"nickname": "Gabs"})
+updatedDict.pop("age")
 
-numString = None  # TODO: Set to a string containing a number like "77"
-doubledNum = None # TODO: Convert to int and multiply by 2
+numString = "77"
+doubledNum = int(numString) * 2
 
-dupList = None    # TODO: Set to a list with duplicate values
-uniqueList = None # TODO: Use set() to remove duplicates
+dupList = [1, 2, 2, 3, 3, 3]
+uniqueList = list(set(dupList))
 
-wordBank = None  # TODO: Set to a list of at least 6 words, some with "a"
-aCount = 0       # TODO: Count how many words contain the letter "a"
+wordBank = ["apple", "banana", "carrot", "avocado", "cherry", "grape"]
+aCount = 0
+for word in wordBank:
+    if "a" in word:
+        aCount += 1

@@ -4,32 +4,68 @@ Object-Oriented Models Module
 Defines domain models for a vehicle management and
 pet adoption system using classes and inheritance.
 """
-# I AM NOT DONE
 
-# TODO: Create a Car class with make, model, year and a describe() method.
-#       describe() should return "[make] [model]".
+class Car:
+    def __init__(self, make, model, year):
+        self.make = make
+        self.model = model
+        self.year = year
 
-car1 = None  # TODO: Create a Car instance
-car2 = None  # TODO: Create another Car instance with a different make
+    def describe(self):
+        return f"{self.make} {self.model}"
 
-# TODO: Create an Animal class with name, sound, and a speak() method.
-#       speak() should return "[name] says [sound]".
 
-# TODO: Create a Pet class that inherits from Animal, adds ownerName,
-#       and adds greetOwner() returning "[name] runs to [ownerName]!".
+car1 = Car("Toyota", "Camry", 2020)
+car2 = Car("Honda", "Civic", 2021)
 
-myPet = None  # TODO: Create a Pet instance
 
-# TODO: Create a BankAccount class with accountHolder, balance,
-#       deposit(amount), and withdraw(amount) methods.
-#       withdraw returns "Insufficient funds." if amount > balance.
+class Animal:
+    def __init__(self, name, sound):
+        self.name = name
+        self.sound = sound
 
-# TODO: Create a SavingsAccount class that inherits from BankAccount,
-#       adds interestRate, and adds applyInterest().
+    def speak(self):
+        return f"{self.name} says {self.sound}"
 
-myAccount = None  # TODO: Create a BankAccount instance
-# TODO: Change accountHolder directly on myAccount
 
-animalOne = None  # TODO: Create an Animal instance
-animalTwo = None  # TODO: Create another Animal instance
-# TODO: Change animalOne's name directly
+class Pet(Animal):
+    def __init__(self, name, sound, ownerName):
+        super().__init__(name, sound)
+        self.ownerName = ownerName
+
+    def greetOwner(self):
+        return f"{self.name} runs to {self.ownerName}!"
+
+
+myPet = Pet("Buddy", "Woof", "Gaby")
+
+
+class BankAccount:
+    def __init__(self, accountHolder, balance=0):
+        self.accountHolder = accountHolder
+        self.balance = balance
+
+    def deposit(self, amount):
+        self.balance += amount
+
+    def withdraw(self, amount):
+        if amount > self.balance:
+            return "Insufficient funds."
+        self.balance -= amount
+
+
+class SavingsAccount(BankAccount):
+    def __init__(self, accountHolder, balance=0, interestRate=0.02):
+        super().__init__(accountHolder, balance)
+        self.interestRate = interestRate
+
+    def applyInterest(self):
+        self.balance += self.balance * self.interestRate
+
+
+myAccount = BankAccount("Gaby", 100)
+myAccount.accountHolder = "Gabriela"
+
+animalOne = Animal("Cat", "Meow")
+animalTwo = Animal("Dog", "Woof")
+animalOne.name = "Kitty"

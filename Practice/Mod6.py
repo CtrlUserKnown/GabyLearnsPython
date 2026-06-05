@@ -4,52 +4,91 @@ Payment and File Processing Module
 Demonstrates error handling patterns for payment validation,
 data conversion, and file operations.
 """
-# I AM NOT DONE
 
-result1 = None  # TODO: try/except ZeroDivisionError from 10/0
-result2 = None  # TODO: try/except ValueError from int("hello")
+try:
+    result1 = 10 / 0
+except ZeroDivisionError:
+    result1 = "cannot divide by zero"
 
-shortList = None  # TODO: Set to a list with 3 items
-result3 = None    # TODO: try/except IndexError from shortList[10]
+try:
+    result2 = int("hello")
+except ValueError:
+    result2 = "cannot convert to int"
 
-divResult = None    # TODO: try/except/else dividing 10 by 2, store in else
-finallyRan = None   # TODO: try/except/finally, store "finally ran" in finally
+shortList = [1, 2, 3]
+try:
+    result3 = shortList[10]
+except IndexError:
+    result3 = "index out of range"
+
+try:
+    divResult = 10 / 2
+except ZeroDivisionError:
+    divResult = None
+else:
+    divResult = divResult
+
+finallyRan = None
+try:
+    1 / 1
+except ZeroDivisionError:
+    pass
+finally:
+    finallyRan = "finally ran"
 
 
 def getElement(lst, index):
-    """Return the element at index, or None if out of range (use try/except)."""
-    raise NotImplementedError()
-
-
-result7 = None  # TODO: try/except calling validateAge(-1) to catch ValueError
+    try:
+        return lst[index]
+    except IndexError:
+        return None
 
 
 def validateAge(age):
-    """Raise ValueError if age is negative."""
-    raise NotImplementedError()
+    if age < 0:
+        raise ValueError("Age cannot be negative")
+
+
+try:
+    result7 = validateAge(-1)
+except ValueError:
+    result7 = "caught ValueError"
 
 
 def safeDivide(a, b):
-    """Return a/b or raise ZeroDivisionError if b is 0."""
-    raise NotImplementedError()
+    if b == 0:
+        raise ZeroDivisionError("Cannot divide by zero")
+    return a / b
 
 
-result9 = None  # TODO: try/except to catch TypeError from "hello" + 5
+try:
+    result9 = "hello" + 5
+except TypeError:
+    result9 = "caught TypeError"
 
 
 def checkStock(quantity):
-    """
-    Raise ValueError if quantity < 0.
-    Raise Exception("Out of stock.") if quantity == 0.
-    Return "In stock" otherwise.
-    """
-    raise NotImplementedError()
+    if quantity < 0:
+        raise ValueError("Quantity cannot be negative")
+    if quantity == 0:
+        raise Exception("Out of stock.")
+    return "In stock"
 
 
-parsedFloat = None    # TODO: try/except/else/finally to convert "3.14" to float
-inputCheckDone = None # TODO: Store "done" in the finally block
+try:
+    parsedFloat = float("3.14")
+except ValueError:
+    parsedFloat = None
+else:
+    parsedFloat = parsedFloat
+finally:
+    inputCheckDone = "done"
 
 
 def openFile():
-    """Try to open "data.txt". Return "file found" or "file not found"."""
-    raise NotImplementedError()
+    try:
+        f = open("data.txt")
+        f.close()
+        return "file found"
+    except FileNotFoundError:
+        return "file not found"

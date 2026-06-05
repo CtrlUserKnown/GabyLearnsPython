@@ -4,47 +4,34 @@ Date and Time Management Module
 Utilities for date parsing, formatting, scheduling,
 and time-based calculations.
 """
-# I AM NOT DONE
 
 from datetime import datetime, date, timedelta
 
-# TODO: Get the current date and time
-now = None
+now = datetime.now()
 
-# TODO: Extract year, month, day from now
-currentYear = None
-currentMonth = None
-currentDay = None
+currentYear = now.year
+currentMonth = now.month
+currentDay = now.day
 
-# TODO: Create a specific date: Christmas 2026
-christmas = None
+christmas = date(2026, 12, 25)
 
-# TODO: Format current date as "June 04, 2026"
-formattedDate = None
+formattedDate = now.strftime("%B %d, %Y")
 
-# TODO: Parse "2026-12-25" into a datetime object
-parsedDate = None
+parsedDate = datetime.strptime("2026-12-25", "%Y-%m-%d")
 
-# TODO: Calculate the number of days until Christmas
-daysUntilChristmas = None
+daysUntilChristmas = (christmas - date.today()).days
 
-# TODO: Create a date 7 days from now
-oneWeekLater = None
+oneWeekLater = date.today() + timedelta(days=7)
 
-# TODO: Create a date 30 days ago
-thirtyDaysAgo = None
+thirtyDaysAgo = date.today() - timedelta(days=30)
 
-# TODO: Use strftime to format as "Thursday, June 04, 2026"
-todayFormatted = None
+todayFormatted = date.today().strftime("%A, %B %d, %Y")
 
-# TODO: Compare dates: is christmas after today?
-isChristmasFuture = None
+isChristmasFuture = christmas > date.today()
 
-# TODO: Create a specific time (e.g., 2:30 PM)
 from datetime import time
-specificTime = None
+specificTime = time(14, 30)
 
-# TODO: Calculate the difference between two dates in days
 date1 = date(2026, 1, 1)
 date2 = date(2026, 12, 31)
-daysBetween = None
+daysBetween = (date2 - date1).days
