@@ -828,6 +828,18 @@ kbd {
   font-weight: 600;
 }
 
+.docs-table td a {
+  color: var(--text-primary);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--border-color);
+  transition: all 0.2s;
+}
+
+.docs-table td a:hover {
+  color: var(--pink);
+  border-bottom-color: var(--pink);
+}
+
 /* ============================
    PYLINGS
    ============================ */
