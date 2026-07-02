@@ -85,7 +85,34 @@ kbd {
   line-height: 1.4;
 }
 
-/* Scan lines overlay */
+/* Custom cursor */
+body.custom-cursor-active {
+  cursor: none;
+}
+
+body.custom-cursor-active a,
+body.custom-cursor-active button,
+body.custom-cursor-active .btn,
+body.custom-cursor-active kbd,
+body.custom-cursor-active .docs-table td a {
+  cursor: none;
+}
+
+.custom-cursor {
+  position: fixed;
+  pointer-events: none;
+  z-index: 10000;
+  font-size: 1.6rem;
+  transform: translate(-50%, -50%);
+  transition: transform 0.05s;
+  display: none;
+  line-height: 1;
+}
+
+/* ============================
+   SCAN LINES
+   ============================ */
+
 .scanlines {
   position: fixed;
   inset: 0;

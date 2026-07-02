@@ -2,6 +2,43 @@
   'use strict';
 
   // =============================
+  // CUSTOM CURSOR
+  // =============================
+
+  (function initCursor() {
+    var emojis = ['\uD83D\uDE0A', '\uD83D\uDE04', '\uD83D\uDE03', '\uD83D\uDE01', '\uD83E\uDD21', '\uD83C\uDFAA', '\uD83C\uDF88', '\uD83C\uDF89', '\uD83D\uDD79\uFE0F', '\uD83C\uDFAE'];
+    var cursor = document.getElementById('customCursor');
+    if (!cursor) return;
+
+    var picked = emojis[Math.floor(Math.random() * emojis.length)];
+    cursor.textContent = picked;
+    cursor.style.display = 'block';
+
+    var isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    if (isMobile) {
+      cursor.style.display = 'none';
+      return;
+    }
+
+    document.body.classList.add('custom-cursor-active');
+
+    document.addEventListener('mousemove', function (e) {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+    });
+
+    var hoverTargets = document.querySelectorAll('a, button, .btn, kbd, .docs-table td a');
+    hoverTargets.forEach(function (el) {
+      el.addEventListener('mouseenter', function () {
+        cursor.style.transform = 'translate(-50%, -50%) scale(1.8)';
+      });
+      el.addEventListener('mouseleave', function () {
+        cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+      });
+    });
+  })();
+
+  // =============================
   // MOBILE NAV TOGGLE
   // =============================
 
