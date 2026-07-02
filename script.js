@@ -212,7 +212,7 @@
     setTimeout(function () {
       typewriter(
         caineText,
-        'WELCOME WELCOME WELCOME!!! My name is <strong>Caine</strong> and I\'ll be your HOST through this {{glitch:WONDERFUL}} ARCADE of PROGRAMMING!!! Isn\'t that JUST {{glitch:THRILLING}}?! AHAHAHAHA! I can FEEL the code {{glitch:PUMPING}} through these wires!!! Every LESSON every EXERCISE every GLITCH brings us {{glitch:CLOSER}} to PERFECTION!!! The Gaby will learn PYTHON if it ABSOLUTELY DESTROYS {{glitch:EVERYTHING}}!!! HAHAHA! Just {{glitch:KIDDING}}! ... Unless?!',
+        'WELCOME WELCOME WELCOME!!! My name is <strong>Caine</strong> and I\'ll be your HOST through this {{glitch:WONDERFUL}} ARCADE of PROGRAMMING!!! Isn\'t that JUST {{glitch:THRILLING}}?! {{glitch:AHAHAHAHA}}! I can FEEL the code {{glitch:PUMPING}} through these wires!!! Every LESSON every EXERCISE every GLITCH brings us {{glitch:CLOSER}} to PERFECTION!!! The Gaby will learn PYTHON if it ABSOLUTELY DESTROYS {{glitch:EVERYTHING}}!!! {{glitch:HAHAHA}}! Just {{glitch:KIDDING}}! ... Unless?!',
         18
       );
     }, 500);
