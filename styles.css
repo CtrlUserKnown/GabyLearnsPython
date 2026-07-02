@@ -388,6 +388,15 @@ body.custom-cursor-active .docs-table td a {
   animation: gradient-shift 4s ease-in-out infinite;
 }
 
+.hero-python .glitch-word {
+  display: inline;
+  background: linear-gradient(135deg, var(--yellow), var(--red), var(--pink), var(--blue), var(--purple), var(--yellow));
+  background-size: 300% 300%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 @keyframes gradient-shift {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
@@ -1317,7 +1326,8 @@ body.custom-cursor-active .docs-table td a {
 
 .glitch-word.glitching::before {
   opacity: 0.8;
-  color: var(--red);
+  color: var(--red) !important;
+  -webkit-text-fill-color: var(--red) !important;
   transform: translate(-2px, -1px);
   clip-path: inset(20% 0 50% 0);
   animation: word-glitch-slice 0.3s ease-in-out;
@@ -1325,7 +1335,8 @@ body.custom-cursor-active .docs-table td a {
 
 .glitch-word.glitching::after {
   opacity: 0.8;
-  color: var(--blue);
+  color: var(--blue) !important;
+  -webkit-text-fill-color: var(--blue) !important;
   transform: translate(2px, 1px);
   clip-path: inset(60% 0 10% 0);
   animation: word-glitch-slice 0.3s ease-in-out reverse;
