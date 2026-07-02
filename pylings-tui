@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-# Convenience wrapper: run the pylings TUI from the project root
-DIR="$(cd "$(dirname "$0")" && pwd)"
-exec "$DIR/PylingsTUI/.build/apple/Products/Release/pylings" "$@"
