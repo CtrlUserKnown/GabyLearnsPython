@@ -1,9 +1,9 @@
-# Assignment 6: The Bakery's Menu Board
+# BONUS ROUND 6: THE BAKERY'S MENU BOARD!
 # Due date: TBD
 
-# Scenario: The bakery wants to redesign their menu board. They have lists
+# THE CHALLENGE: The bakery wants to redesign their menu board! They have lists
 # of items, prices, and categories. They need you to transform this data
-# into something more useful using comprehensions.
+# into something more useful using comprehensions!
 
 # Tasks:
 # 1. Create three lists:
@@ -58,4 +58,5 @@
 #    - Comprehensions are readable (not overly complex).
 #                                                        Total:    ( /100 )
 
+# "COMPREHENSIONS? COMPREHENSIBLE!" — Caine
 # --- START YOUR CODE BELOW ---

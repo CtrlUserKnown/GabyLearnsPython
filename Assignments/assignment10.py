@@ -1,10 +1,10 @@
-# Assignment 10: The Bakery's Data Dashboard (Capstone)
+# CHALLENGE 10: THE BAKERY'S DATA DASHBOARD (FINAL BOSS!)
 # Due date: TBD
 
-# Scenario: This is the final challenge! The bakery wants an all-in-one
+# THE SCENARIO: This is the final challenge! The bakery wants an all-in-one
 # dashboard that can load sales data, analyze it, and print a beautiful
-# report. This assignment combines everything you've learned from day 1
-# to day 20.
+# report! This assignment combines everything The Gaby has learned from day 1
+# to day 20!
 
 # Tasks:
 
@@ -91,4 +91,5 @@
 #    - Code is clean and production-ready.
 #                                                        Total:    ( /100 )
 
+# "THE FINAL BOSS! CAN THE GABY BECOME THE ULTIMATE CHAMPION?!" — Caine
 # --- START YOUR CODE BELOW ---

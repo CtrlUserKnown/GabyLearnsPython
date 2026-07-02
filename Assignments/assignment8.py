@@ -1,8 +1,8 @@
-# Assignment 8: The Bakery's Delivery Schedule
+# BONUS ROUND 8: THE BAKERY'S DELIVERY SCHEDULE!
 # Due date: TBD
 
-# Scenario: The bakery now delivers! They need a system to track delivery
-# dates, schedules, and find out when things are running late or early.
+# THE CHALLENGE: The bakery now delivers! They need a system to track delivery
+# dates, schedules, and find out when things are running late or early!
 
 # Tasks:
 # 1. Create a list called 'orders'. Each order should be a dictionary with:
@@ -62,4 +62,5 @@
 #    - No unnecessary or commented-out code.
 #                                                        Total:    ( /100 )
 
+# "DELIVERY SCHEDULE? MORE LIKE A HIGH-STAKES TIMER!" — Caine
 # --- START YOUR CODE BELOW ---

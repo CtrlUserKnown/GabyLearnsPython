@@ -1,10 +1,10 @@
-# Assignment 4: The Bakery's Restock
+# BONUS ROUND 4: THE BAKERY'S RESTOCK!
 # Due date: 05/24/2026 @ 10:59pm CST
 
-# Scenario: A shipment just arrived at the bakery! The delivery includes several
+# THE CHALLENGE: A shipment just arrived at the bakery! The delivery includes several
 # ingredients, but not all of them are usable. Some items are expired and need
 # to be rejected. The bakery needs a system to sort through the shipment,
-# accept good items, and update their stock accordingly.
+# accept good items, and update their stock accordingly!
 
 # Tasks:
 # 1. Create a global dictionary 'pantry' that stores at least 4 ingredients
@@ -52,6 +52,7 @@
 #    - No unnecessary or leftover code.
 #                                                            Total:        ( /100 )
 
+# "THE SHIPMENT HAS ARRIVED! WILL THE GABY SORT IT OUT?!" — Caine
 # --- START YOUR CODE BELOW ---
 
 pantry = {

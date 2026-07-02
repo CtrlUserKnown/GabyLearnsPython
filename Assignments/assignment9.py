@@ -1,9 +1,9 @@
-# Assignment 9: The Bakery's Sales Report
+# CHALLENGE 9: THE BAKERY'S SALES REPORT!
 # Due date: TBD
 
-# Scenario: The bakery needs a system to read their daily sales from a CSV
-# file, process the data, and export a summary report as JSON. They also
-# need to be able to combine data from multiple days.
+# THE SCENARIO: The bakery needs a system to read their daily sales from a CSV
+# file, process the data, and export a summary report as JSON! They also
+# need to be able to combine data from multiple days!
 
 # Tasks:
 
@@ -74,4 +74,5 @@
 #    - No unnecessary or commented-out code.
 #                                                        Total:    ( /100 )
 
+# "DATA! CSV! JSON! OH MY!" — Caine
 # --- START YOUR CODE BELOW ---

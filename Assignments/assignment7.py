@@ -1,9 +1,9 @@
-# Assignment 7: The Bakery's Price Calculator
+# CHALLENGE 7: THE BAKERY'S PRICE CALCULATOR!
 # Due date: TBD
 
-# Scenario: The bakery needs a flexible pricing system. Different customers
+# THE SCENARIO: The bakery needs a flexible pricing system! Different customers
 # get different discounts, and some orders have special rules. They need
-# you to build a system using advanced functions.
+# you to build a system using advanced functions!
 
 # Tasks:
 # 1. Create a function 'calculateTotal' that takes:
@@ -66,4 +66,5 @@
 #    - No unnecessary or commented-out code.
 #                                                        Total:    ( /100 )
 
+# "CLOSURES? LAMBDAS? THE GABY CAN HANDLE IT!" — Caine
 # --- START YOUR CODE BELOW ---

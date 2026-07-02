@@ -1,6 +1,6 @@
-# Assignment: The Cupcake Counter
-# Scenario: A small bakery needs a system to track their flour supply. 
-# They need to know if they have enough ingredients to bake cupcakes before they start.
+# BONUS ROUND 1: THE CUPCAKE COUNTER!
+# THE CHALLENGE: A small bakery needs a system to track their flour supply!
+# They need to know if they have enough ingredients to bake cupcakes before they start!
 
 # Final Grade: 95/100
 # Reason:
@@ -22,8 +22,9 @@
 # Hint for checkStock: Use a comparison symbol like >= to compare your stock with what is required.
 # Hint for bakeOrder: Since 'totalFlour' is outside the function, you will need to use 'global totalFlour' inside the function to change it.
 
+# "LET'S SEE IF THE GABY CAN CRACK THIS CODE!" — Caine
 # --- START YOUR CODE BELOW ---
-# (Gaby's submission)
+# (The Gaby's submission)
 bakeryName = "Sweet Treats Bakery"
 TotalFlour = 10.5 
 def checkStock(flour):

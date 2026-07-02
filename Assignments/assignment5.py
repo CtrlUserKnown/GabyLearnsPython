@@ -1,9 +1,9 @@
-# Assignment 5: The Bakery's Recipe Module
+# CHALLENGE 5: THE BAKERY'S RECIPE MODULE!
 # Due date: TBD
 
-# Scenario: The bakery wants to organize all their recipes into a module.
+# THE SCENARIO: The bakery wants to organize all their recipes into a module!
 # Instead of having recipe code scattered everywhere, they want a single
-# file they can import whenever they need to look up or scale a recipe.
+# file they can import whenever they need to look up or scale a recipe!
 
 # Tasks:
 # 1. Create a dictionary called 'recipes' that stores at least 4 recipes.
@@ -61,4 +61,5 @@
 #    - hasIngredients handles missing pantry keys safely.
 #                                                        Total:    ( /100 )
 
+# "MODULE POWER, ACTIVATED!" — Caine
 # --- START YOUR CODE BELOW ---

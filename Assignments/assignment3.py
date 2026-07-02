@@ -1,8 +1,8 @@
-# Assignment 3: The Bakery Gets Bigger
+# LEVEL UP! CHALLENGE 3: THE BAKERY GETS BIGGER!
 # Due date: 04/19/2026 @ 10:59pm CST
 
-# Scenario: The bakery is growing! Instead of just tracking flour,
-# they now want a proper system to manage their baked goods.
+# THE SCENARIO: The bakery is growing! Instead of just tracking flour,
+# they now want a proper system to manage their baked goods!
 
 # Tasks:
 # 1. Create a class called 'BakedGood'.
@@ -37,4 +37,5 @@
 #    - No unnecessary or leftover code.
 #                                                                Total:    ( /100 )
 
+# "IT'S TIME TO LEVEL UP WITH CLASSES!" — Caine
 # --- START YOUR CODE BELOW ---

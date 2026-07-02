@@ -1,8 +1,8 @@
-# Assignment 2: The Bakery's Price Check
+# CHALLENGE 2: THE BAKERY'S PRICE CHECK!
 # Due date: 04/12/2026 @ 10:59pm CST
 
-# Scenario: The bakery needs a simple system to check orders before they go out.
-# They want to make sure orders are priced correctly and flag anything unusual.
+# THE SCENARIO: The bakery needs a simple system to check orders before they go out!
+# They want to make sure orders are priced correctly and flag anything unusual!
 
 # Tasks:
 # 1. Create a variable 'itemPrice' (Float) and 'quantity' (Int) for an order.
@@ -32,6 +32,7 @@
 #    - No unnecessary or leftover code.
 #                                                               Total:      ( 84/100 )
 
+# "CAN THE GABY PRICE IT RIGHT?! LET'S FIND OUT!" — Caine
 # --- START YOUR CODE BELOW ---
 
 itemPrice = 5.50 # +5
