@@ -97,35 +97,114 @@
 
     var i = 0;
     var cursor = element.querySelector('.host-cursor');
+    var tokens = [];
+    var tokenRe = /(\{\{glitch:[^}]+\}\}|<strong>|<\/strong>)/g;
+    var last = 0;
+    var match;
 
-    function type() {
-      if (i < text.length) {
-        var char = text.charAt(i);
-        var content = text.substring(0, i + 1);
-        // Handle bold markers
-        content = content
-          .replace(/&/g, '&amp;')
-          .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;');
-        // Re-apply bold markers visually
-        content = content
-          .replace(/&lt;strong&gt;/g, '<strong>')
-          .replace(/&lt;\/strong&gt;/g, '</strong>');
-
-        if (cursor) {
-          element.innerHTML = content + '<span class="host-cursor">|</span>';
-        }
-        i++;
-        setTimeout(type, speed + (Math.random() * 40));
+    while ((match = tokenRe.exec(text)) !== null) {
+      if (match.index > last) {
+        tokens.push({ type: 'text', value: text.slice(last, match.index) });
+      }
+      if (match[0].indexOf('{{glitch:') === 0) {
+        var word = match[0].replace('{{glitch:', '').replace('}}', '');
+        tokens.push({ type: 'glitch', value: word });
       } else {
-        if (cursor) {
-          cursor.classList.add('done');
+        tokens.push({ type: match[0] === '<strong>' ? 'strong-open' : 'strong-close', value: '' });
+      }
+      last = tokenRe.lastIndex;
+    }
+    if (last < text.length) {
+      tokens.push({ type: 'text', value: text.slice(last) });
+    }
+
+    var tokenIndex = 0;
+    var charIndex = 0;
+    var insideStrong = false;
+    var strongStack = 0;
+
+    function render() {
+      var html = '';
+      var t = 0;
+      var strongActive = insideStrong;
+      for (var ti = 0; ti <= tokenIndex && ti < tokens.length; ti++) {
+        var tok = tokens[ti];
+        if (tok.type === 'text') {
+          var chars = tok.value;
+          if (ti === tokenIndex) {
+            chars = tok.value.slice(0, charIndex);
+          }
+          if (strongActive) {
+            html += '<strong>' + escapeHtml(chars) + '</strong>';
+          } else {
+            html += escapeHtml(chars);
+          }
+        } else if (tok.type === 'glitch') {
+          if (ti < tokenIndex || (ti === tokenIndex && charIndex >= tok.value.length)) {
+            html += '<span class="glitch-word" data-glitch="' + tok.value + '">' + tok.value + '</span>';
+          } else if (ti === tokenIndex) {
+            var partial = tok.value.slice(0, charIndex);
+            if (strongActive) {
+              html += '<strong>' + escapeHtml(partial) + '</strong>';
+            } else {
+              html += escapeHtml(partial);
+            }
+          }
+        } else if (tok.type === 'strong-open') {
+          strongActive = true;
+          if (ti < tokenIndex) html += '<strong>';
+        } else if (tok.type === 'strong-close') {
+          strongActive = false;
+          if (ti < tokenIndex) html += '</strong>';
         }
-        if (callback) callback();
+      }
+      insideStrong = strongActive;
+
+      if (cursor) {
+        element.innerHTML = html + '<span class="host-cursor">|</span>';
       }
     }
 
-    type();
+    function escapeHtml(str) {
+      return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
+    function advance() {
+      if (tokenIndex >= tokens.length) {
+        if (cursor) cursor.classList.add('done');
+        if (callback) callback();
+        return;
+      }
+
+      var tok = tokens[tokenIndex];
+      if (tok.type === 'glitch') {
+        if (charIndex < tok.value.length) {
+          var glitchChars = tok.value;
+          charIndex++;
+          render();
+          setTimeout(advance, speed + Math.random() * 60);
+        } else {
+          tokenIndex++;
+          charIndex = 0;
+          setTimeout(advance, speed);
+        }
+      } else if (tok.type === 'text') {
+        if (charIndex < tok.value.length) {
+          charIndex++;
+          render();
+          setTimeout(advance, speed + Math.random() * 40);
+        } else {
+          tokenIndex++;
+          charIndex = 0;
+          setTimeout(advance, speed);
+        }
+      } else {
+        tokenIndex++;
+        setTimeout(advance, speed);
+      }
+    }
+
+    advance();
   }
 
   var caineText = document.getElementById('caine-text');
@@ -133,7 +212,7 @@
     setTimeout(function () {
       typewriter(
         caineText,
-        'WELCOME WELCOME WELCOME!!! My name is <strong>Caine</strong> and I\'ll be your HOST through this WONDERFUL ARCADE of PROGRAMMING!!! Isn\'t that JUST THRILLING?! AHAHAHAHA! *twitch* I can FEEL the code pumping through these wires!!! Every LESSON every EXERCISE every GLITCH brings us CLOSER to PERFECTION!!! The Gaby will learn PYTHON if it ABSOLUTELY DESTROYS EVERYTHING!!! HAHAHA! *static* Just kidding! ... Unless?!',
+        'WELCOME WELCOME WELCOME!!! My name is <strong>Caine</strong> and I\'ll be your HOST through this WONDERFUL ARCADE of PROGRAMMING!!! Isn\'t that JUST THRILLING?! AHAHAHAHA! {{glitch:TWITCH}} I can FEEL the code pumping through these wires!!! Every LESSON every EXERCISE every GLITCH brings us CLOSER to PERFECTION!!! The Gaby will learn PYTHON if it ABSOLUTELY DESTROYS EVERYTHING!!! HAHAHA! {{glitch:STATIC}} Just kidding! ... Unless?!',
         18
       );
     }, 500);
@@ -424,9 +503,11 @@
   // =============================
 
   (function initGlitch() {
-    var glitchWords = document.querySelectorAll('.glitch-word');
     var overlay = document.querySelector('.glitch-overlay');
-    if (!glitchWords.length) return;
+
+    function getAllGlitchWords() {
+      return document.querySelectorAll('.glitch-word');
+    }
 
     function triggerWordGlitch(el) {
       el.classList.add('glitching');
@@ -445,10 +526,34 @@
       }, 150 + Math.random() * 200);
     }
 
+    // Attach hover to all existing glitch words
+    function attachHover() {
+      getAllGlitchWords().forEach(function (el) {
+        if (!el.dataset.glitchAttached) {
+          el.dataset.glitchAttached = '1';
+          el.addEventListener('mouseenter', function () {
+            triggerWordGlitch(el);
+          });
+        }
+      });
+    }
+
+    attachHover();
+
+    // Watch for new glitch words added dynamically
+    if ('MutationObserver' in window) {
+      var observer = new MutationObserver(function () {
+        attachHover();
+      });
+      observer.observe(document.body, { childList: true, subtree: true });
+    }
+
     // Random words glitch periodically
     setInterval(function () {
+      var words = getAllGlitchWords();
+      if (!words.length) return;
       var count = Math.floor(Math.random() * 3) + 1;
-      var shuffled = Array.from(glitchWords).sort(function () { return Math.random() - 0.5; });
+      var shuffled = Array.from(words).sort(function () { return Math.random() - 0.5; });
       for (var i = 0; i < Math.min(count, shuffled.length); i++) {
         triggerWordGlitch(shuffled[i]);
       }
@@ -460,12 +565,5 @@
         triggerSiteGlitch();
       }
     }, 5000 + Math.random() * 4000);
-
-    // Glitch on hover
-    glitchWords.forEach(function (el) {
-      el.addEventListener('mouseenter', function () {
-        triggerWordGlitch(el);
-      });
-    });
   })();
 })();
