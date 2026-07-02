@@ -1291,6 +1291,109 @@ body.custom-cursor-active .docs-table td a {
 }
 
 /* ============================
+   GLITCH EFFECTS
+   ============================ */
+
+.glitch-word {
+  position: relative;
+  display: inline-block;
+}
+
+.glitch-word::before,
+.glitch-word::after {
+  content: attr(data-glitch);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.glitch-word.glitching {
+  animation: word-glitch 0.3s ease-in-out;
+}
+
+.glitch-word.glitching::before {
+  opacity: 0.8;
+  color: var(--red);
+  transform: translate(-2px, -1px);
+  clip-path: inset(20% 0 50% 0);
+  animation: word-glitch-slice 0.3s ease-in-out;
+}
+
+.glitch-word.glitching::after {
+  opacity: 0.8;
+  color: var(--blue);
+  transform: translate(2px, 1px);
+  clip-path: inset(60% 0 10% 0);
+  animation: word-glitch-slice 0.3s ease-in-out reverse;
+}
+
+@keyframes word-glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-3px, 2px); }
+  40% { transform: translate(3px, -1px); }
+  60% { transform: translate(-2px, -2px); }
+  80% { transform: translate(2px, 1px); }
+  100% { transform: translate(0); }
+}
+
+@keyframes word-glitch-slice {
+  0% { transform: translate(0); }
+  25% { transform: translate(-3px, 2px) skewX(-5deg); }
+  50% { transform: translate(3px, -1px) skewX(5deg); }
+  75% { transform: translate(-2px, -2px) skewX(-3deg); }
+  100% { transform: translate(0); }
+}
+
+.glitch-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  opacity: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(230, 57, 70, 0.05) 20%,
+    rgba(74, 144, 217, 0.05) 40%,
+    transparent 50%,
+    rgba(255, 107, 157, 0.05) 60%,
+    rgba(155, 89, 182, 0.05) 80%,
+    transparent 100%
+  );
+  background-size: 100% 200%;
+  transition: opacity 0.05s;
+}
+
+.glitch-overlay.active {
+  opacity: 1;
+  animation: site-glitch-overlay 0.15s ease-in-out;
+}
+
+@keyframes site-glitch-overlay {
+  0% { background-position: 0 0; }
+  25% { background-position: 0 50%; }
+  50% { background-position: 0 100%; }
+  75% { background-position: 0 50%; }
+  100% { background-position: 0 0; }
+}
+
+body.site-glitching {
+  animation: site-glitch-shake 0.15s ease-in-out;
+}
+
+@keyframes site-glitch-shake {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-4px, 2px) skewX(1deg); }
+  50% { transform: translate(4px, -2px) skewX(-1deg); }
+  75% { transform: translate(-2px, 1px) skewX(0.5deg); }
+  100% { transform: translate(0, 0); }
+}
+
+/* ============================
    RESPONSIVE
    ============================ */
 

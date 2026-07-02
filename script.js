@@ -133,8 +133,8 @@
     setTimeout(function () {
       typewriter(
         caineText,
-        'Welcome, welcome, WELCOME! My name is <strong>Caine</strong>, and I\'ll be your HOST through this wonderful ARCADE of programming! Isn\'t that EXCITING? HAHAHA!',
-        25
+        'WELCOME WELCOME WELCOME!!! My name is <strong>Caine</strong> and I\'ll be your HOST through this WONDERFUL ARCADE of PROGRAMMING!!! Isn\'t that JUST THRILLING?! AHAHAHAHA! *twitch* I can FEEL the code pumping through these wires!!! Every LESSON every EXERCISE every GLITCH brings us CLOSER to PERFECTION!!! The Gaby will learn PYTHON if it ABSOLUTELY DESTROYS EVERYTHING!!! HAHAHA! *static* Just kidding! ... Unless?!',
+        18
       );
     }, 500);
   }
@@ -418,4 +418,54 @@
   }
 
   loadContributors();
+
+  // =============================
+  // GLITCH SYSTEM
+  // =============================
+
+  (function initGlitch() {
+    var glitchWords = document.querySelectorAll('.glitch-word');
+    var overlay = document.querySelector('.glitch-overlay');
+    if (!glitchWords.length) return;
+
+    function triggerWordGlitch(el) {
+      el.classList.add('glitching');
+      setTimeout(function () {
+        el.classList.remove('glitching');
+      }, 200 + Math.random() * 400);
+    }
+
+    function triggerSiteGlitch() {
+      if (!overlay) return;
+      overlay.classList.add('active');
+      document.body.classList.add('site-glitching');
+      setTimeout(function () {
+        overlay.classList.remove('active');
+        document.body.classList.remove('site-glitching');
+      }, 150 + Math.random() * 200);
+    }
+
+    // Random words glitch periodically
+    setInterval(function () {
+      var count = Math.floor(Math.random() * 3) + 1;
+      var shuffled = Array.from(glitchWords).sort(function () { return Math.random() - 0.5; });
+      for (var i = 0; i < Math.min(count, shuffled.length); i++) {
+        triggerWordGlitch(shuffled[i]);
+      }
+    }, 2000 + Math.random() * 3000);
+
+    // Site-wide glitch every so often
+    setInterval(function () {
+      if (Math.random() < 0.35) {
+        triggerSiteGlitch();
+      }
+    }, 5000 + Math.random() * 4000);
+
+    // Glitch on hover
+    glitchWords.forEach(function (el) {
+      el.addEventListener('mouseenter', function () {
+        triggerWordGlitch(el);
+      });
+    });
+  })();
 })();
